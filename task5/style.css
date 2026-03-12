@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    width: 100%;
+    background-color: #f4f4f4;
+    padding: 15px 50px;
+    box-sizing: border-box;
+}
+.logo {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.menu {
+    float: left;
+    margin-left: 200px;
+}
+
+.menu a {
+    text-decoration: none;
+    margin-right: 25px;
+    color: #555;
+    font-size: 14px;
+}
+.username {
+    float: right;
+    background-color: #d6ebff;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.clear {
+    clear: both;
+}
+.hero {
+    height: 90vh;
+    width: 100%;
+    padding: 60px;
+    box-sizing: border-box;
+}
+.hero-left {
+    width: 50%;
+    float: left;
+}
+.hero-left h1 {
+    font-size: 40px;
+    color: #333;
+}
+.hero-left span {
+    color: #1e90ff;
+}
+.hero-left p {
+    color: #666;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+.hero-left button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.hero-right {
+    width: 50%;
+    float: right;
+    text-align: center;
+}
+.hero-right img {
+    width: 70%;
+    margin-top: 40px;
+}
