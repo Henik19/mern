@@ -1,0 +1,28 @@
+body{
+    background-color: lightgray;
+}
+
+.head{
+    color: darkblue;
+}
+
+#bgime{
+    background-color: lightblue;
+}
+
+p{
+    color: white;
+}
+
+#para{
+    color: green;
+}
+
+#para span{
+    color: black;
+    font-size: 20px;
+}
+a{
+    color: red;
+    text-decoration: underline;
+}
