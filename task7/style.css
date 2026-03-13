@@ -1,74 +1,95 @@
-body {
+   body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-.navbar {
-    width: 100%;
-    background-color: #f4f4f4;
-    padding: 15px 50px;
-    box-sizing: border-box;
 
+
+:root {
+    --primary-color: #1e90ff;
+    --light-bg: #f4f4f4;
+    --text-color: #333;
+}
+
+.navbar {
+    background-color: var(--light-bg);
+    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .logo {
     font-size: 20px;
     font-weight: bold;
+    color: var(--text-color);
 }
+
 .menu a {
-    text-decoration: none;
     margin-right: 25px;
+    text-decoration: none;
     color: #555;
     font-size: 14px;
 }
+
 .username {
     background-color: #d6ebff;
     padding: 8px 15px;
     border-radius: 10px;
     font-size: 14px;
 }
+
+
+
+
 .hero {
+    display: flex;
     height: 90vh;
-    width: 100%;
     padding: 60px;
     box-sizing: border-box;
-
-    display: flex;
     align-items: center;
 }
+
 .hero-left {
     width: 50%;
 }
+
 .hero-left h1 {
     font-size: 40px;
-    color: #333;
+    color: var(--text-color);
 }
+
 .hero-left span {
-    color: #1e90ff;
+    color: var(--primary-color);
 }
+
 .hero-left p {
-    color: #666;
-    line-height: 1.6;
     margin-top: 20px;
+    line-height: 1.6;
+    color: #666;
 }
+
 .hero-left button {
     margin-top: 25px;
     padding: 12px 25px;
-    background-color: #1e90ff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
 }
+
 .hero-right {
     width: 50%;
     text-align: center;
 }
+
 .hero-right img {
     width: 70%;
-    margin-top: 40px;
 }
+
+
+
+
 @media (max-width: 992px) {
 
     .logo {
@@ -92,29 +113,36 @@ body {
         width: 60%;
     }
 }
+
+
+
 @media (max-width: 600px) {
+
+
     .menu {
         display: none;
     }
+
     .navbar {
         padding: 15px 20px;
     }
-   .hero {
+
+    .hero {
         flex-direction: column;
         text-align: center;
-        padding: 30px;
         height: auto;
+        padding: 30px;
     }
-    .hero-left {
-        width: 100%;
-    }
+
+    .hero-left,
     .hero-right {
         width: 100%;
-        margin-top: 20px;
     }
+
     .hero-left h1 {
         font-size: 22px;
     }
+
     .hero-right img {
         width: 50%;
         margin-top: 20px;
