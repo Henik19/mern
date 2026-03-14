@@ -1,52 +1,28 @@
-/* Basic Reset */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-:root {
-    --primary-color: #1e90ff;
-    --light-bg: #f4f4f4;
-    --text-color: #333;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
 .navbar {
-    background-color: var(--light-bg);
+    background: #f4f4f4;
     padding: 15px 50px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
-
 .logo {
-    font-size: 20px;
     font-weight: bold;
-    color: var(--text-color);
 }
-
 .menu a {
-    margin-right: 25px;
+    margin-right: 20px;
     text-decoration: none;
-    color: #555;
-    font-size: 14px;
+    color: #333;
 }
-
 .username {
-    background-color: #d6ebff;
-    padding: 8px 15px;
-    border-radius: 10px;
-    font-size: 14px;
+    background: #d6ebff;
+    padding: 6px 12px;
+    border-radius: 6px;
 }
-
-/* =========================
-   HAMBURGER BUTTON
-========================= */
-
-/* Hidden on desktop */
 .hamburger {
     display: none;
     font-size: 24px;
@@ -54,137 +30,67 @@ body {
     border: none;
     cursor: pointer;
 }
-
-/* Optional: custom focus style */
-.hamburger:focus {
-    outline: 2px solid var(--primary-color);
-}
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-/* Hidden by default */
 .mobile-menu {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 0;
     width: 60%;
-    background-color: black;
-    padding: 30px 0;
+    background: black;
     text-align: center;
+    padding: 20px 0;
 }
-
-/* Links inside mobile menu */
 .mobile-menu a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 15px 0;
-    font-size: 18px;
+    padding: 10px 0;
 }
-
-/* =========================
-   IMPORTANT PART
-   Using :focus pseudo-class
-========================= */
-
-/*
-When the button is focused,
-show the mobile menu.
-
-~ means general sibling selector.
-.mobile-menu must come after button in HTML.
-*/
-
 .hamburger:focus ~ .mobile-menu {
     display: block;
 }
-
-/* =========================
-   HERO SECTION
-========================= */
-
+.hamburger:focus {
+    outline: 2px solid #1e90ff;
+}
 .hero {
     display: flex;
-    height: 90vh;
     padding: 60px;
     align-items: center;
 }
-
 .hero-left {
     width: 50%;
 }
-
-.hero-left h1 {
-    font-size: 40px;
-}
-
 .hero-left span {
-    color: var(--primary-color);
+    color: #1e90ff;
 }
-
-.hero-left p {
-    margin-top: 20px;
-}
-
-.hero-left button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-}
-
 .hero-right {
     width: 50%;
     text-align: center;
 }
-
 .hero-right img {
     width: 70%;
 }
-
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
-
 @media (max-width: 600px) {
 
-    /* Hide desktop menu */
     .menu {
         display: none;
     }
 
-    /* Show hamburger button */
     .hamburger {
         display: block;
     }
 
-    .navbar {
-        padding: 15px 20px;
+    .username {
+        display: none;
     }
 
     .hero {
         flex-direction: column;
         text-align: center;
-        height: auto;
-        padding: 30px;
     }
 
     .hero-left,
     .hero-right {
         width: 100%;
-    }
-
-    .hero-left h1 {
-        font-size: 22px;
-    }
-
-    .hero-right img {
-        width: 50%;
-        margin-top: 20px;
     }
 }
