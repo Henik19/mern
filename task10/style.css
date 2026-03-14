@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: #f4f4f4;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    min-height: 80vh;
+}
+.hero-content {
+    width: 50%;
+}
+.hero-content h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+.hero-content span {
+    color: #1e90ff;
+}
+.hero-content p {
+    margin-bottom: 20px;
+    color: #555;
+}
+.btn {
+    padding: 12px 25px;
+    border: none;
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.hero-image {
+    width: 50%;
+    text-align: center;
+}
+.hero-image img {
+    width: 70%;
+    transition: transform 0.3s ease;
+}
+.animate {
+    animation: floatMove 6s ease-in-out infinite;
+}
+@keyframes floatMove {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    25% {
+        transform: translate(25px, -25px) scale(1.03);
+    }
+    50% {
+        transform: translate(-25px, -35px) scale(1.05);
+    }
+    75% {
+        transform: translate(20px, -20px) scale(1.02);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-image img {
+        width: 80%;
+    }
+}
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    .hero-content,
+    .hero-image {
+        width: 100%;
+    }
+    .hero-content h1 {
+        font-size: 22px;
+    }
+       .hero-image img {
+        width: 60%;
+        margin-top: 20px;
+    }
+}

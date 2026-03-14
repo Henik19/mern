@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H R | Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <h2 class="logo">H R</h2>
+            <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+            <h1>
+                Hi, I'm <span>H R</span><br>
+                Aspiring MERN Stack Developer
+            </h1>
+            <p>
+              I am currently learning HTML, CSS, JavaScript and working 
+              towards becoming a full stack developer. I enjoy building 
+              responsive and user-friendly websites.
+            </p>
+            <button class="btn">View My Work</button>
+            </div>
+            <div class="hero-image">
+                <img src="download.jpg" alt="Developer Illustration" id="movingImage">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 H R | Built with HTML & CSS</p>
+    </footer>
+
+    <script>
+        const image = document.getElementById("movingImage");
+
+        image.addEventListener("mouseenter", function () {
+            image.classList.add("animate");
+        });
+    </script>
+
+</body>
+</html>
