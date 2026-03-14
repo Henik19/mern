@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="nav">
+    <div class="logo">Thala <span>7.</span></div>
+    <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="product.html">Brands</a>
+        <a href="#">More</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="right-icons">
+        <input type="text" placeholder="Search">
+        <a href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+        <img src="image\pexels-pixabay-157661.jpg">
+    </div>
+</div>
+<div class="cart-container">
+    <div class="cart-left">
+        <h1>Shopping Cart</h1>
+        <table class="cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Seven By M.S.Dhoni Running Shoe</td>
+                <td>- 1 +</td>
+                <a href="payment.html">
+                    <button class="pay-btn">Pay Now ₹4,999</button>
+                </a>
+                <td class="remove">x</td>
+            </tr>
+            <tr>
+                <td>Seven By M.S.Dhoni Running Shoe</td>
+                <td>- 1 +</td>
+                <td>₹4,999</td>
+                <td class="remove">x</td>
+            </tr>
+        </table>
+        <div class="continue">
+            <a href="index.html">← Continue Shopping</a>
+        </div>
+    </div>
+    <div class="cart-right">
+        <div class="summary-card">
+            <h3>Enter Coupon Code</h3>
+            <div class="coupon">
+                <input type="text" placeholder="COUPON CODE">
+                <button class="apply-btn">Apply Coupon</button>
+            </div>
+            <div class="bill">
+                <p>Sub Total <span>₹4,700</span></p>
+                <p>Taxes (if applicable) <span>₹199</span></p>
+                <p>Discount <span>₹0</span></p>
+                <hr>
+                <h3>Total <span>₹4,999</span></h3>
+            </div>
+        </div>
+        <button class="pay-btn">Pay Now ₹4,999</button>
+        <div class="payment-icons">
+            <img src="https://razorpay.com/assets/razorpay-logo.svg">
+        </div>
+    </div>
+</div>
+</body>
+</html>

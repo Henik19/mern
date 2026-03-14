@@ -1,0 +1,395 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 60px;
+    background:#f8f8f8;
+}
+    
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}    
+.logo span{
+    color:orange;
+}
+.menu{
+    display:flex;
+    gap:30px;
+}    
+.menu a{
+    text-decoration:none;
+    color:#333;
+    font-size:15px;
+}    
+.right-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.right-icons input{
+    padding:5px 10px;
+    border-radius:20px;
+    border:1px solid #ccc;
+}    
+.right-icons img{
+    width:35px;
+    height:35px;
+    border-radius:50%
+}   
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px 60px;
+    background:#f2f2f2;
+}
+    
+.left{
+    width:50%;
+}.left h4{
+    margin-bottom:10px;
+    letter-spacing:2px;
+ }
+    
+.left h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+    
+.left h1 span{
+    color:orange;}
+    
+.left p{
+    color:#555;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+.btn{
+    padding:12px 25px;
+    background:#2c2c2c;
+    color:white;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+ }
+    
+.btn:hover{
+    background:orange;
+}
+.right{
+    width:45%;
+}
+.right img{
+    width:100%;
+}    
+.service{
+    background:orange;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:40px 0;
+    color:white;
+}
+.box{
+    text-align:center;
+}    
+.box i{
+    font-size:25px;
+    margin-bottom:10px;
+}    
+.box h2{
+    margin-bottom:5px;
+}
+.path{
+    padding:20px 60px;
+    color:#777;
+    font-size:14px;
+}
+
+/* product page  */
+
+.product{
+    display:flex;
+    padding:60px;
+    gap:40px;
+}    
+.product-left{
+    width:50%;
+}    
+.product-left img{
+    width:100%;
+    background:#eee;
+    padding:20px;
+    border-radius:10px;
+}    
+.product-right{
+    width:50%;
+}    
+.product-right h2{
+    margin-bottom:15px;
+}    
+.desc{
+    color:#555;
+    margin-bottom:20px;
+    line-height:1.5;
+    }
+.price{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:5px;
+}    
+.price h3{
+    color:#2563eb;
+    font-size:28px;
+}    
+.sale{
+    color:green;
+    font-weight:bold;
+}    
+.tax{
+    color:#777;
+    margin-bottom:20px;
+}
+.cart-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}    
+.cart-section input{
+    width:60px;
+    padding:6px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}    
+.cart-btn{
+    background:orange;
+    border:none;
+    padding:12px 25px;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}    
+.cart-btn:hover{
+    background:#ff8c00;
+}    
+.gallery{
+    display:flex;
+    gap:20px;
+    padding:40px 60px;
+    overflow-x:auto;
+}
+.gallery img{
+    width:120px;
+    height:100px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#eee;
+    padding:5px;
+    cursor:pointer;
+}
+
+/* Cart page */
+
+.cart-container{
+    display:flex;
+    justify-content:space-between;
+    padding:60px;
+    gap:40px;
+}
+.cart-left{
+    width:60%;
+}    
+.cart-left h1{
+    margin-bottom:30px;
+}    
+.cart-table{
+    width:100%;
+    border-collapse:collapse;
+}  
+.cart-table th{
+    text-align:left;
+    padding-bottom:10px;
+    color:#777;
+}    
+.cart-table td{
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}    
+.remove{
+    color:red;
+    cursor:pointer;
+}
+.cart-right{
+    width:35%;
+}
+.summary-card{
+    background:#f8f8f8;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+.coupon{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+}
+.coupon input{
+    flex:1;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.apply-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+.bill p{
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+}
+.bill h3{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+}
+.pay-btn{
+    width:100%;
+    background:orange;
+    border:none;
+    padding:15px;
+    color:white;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+.payment-icons img{
+    height:30px;
+}
+.continue{
+    padding:30px 60px;
+}
+.continue a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+}    
+
+/* cjeckout page */
+
+.checkout-container{
+    display:flex;
+    justify-content:space-between;
+    padding:60px;
+    gap:40px;
+    }
+.checkout-left{
+    width:60%;
+}    
+.checkout-left h2{
+    margin-bottom:20px;
+}   
+.checkout-left label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+.checkout-left input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.payment-options{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+}    
+.payment-options button{
+    padding:8px 15px;
+    border:1px solid #ccc;
+    background:#f2f2f2;
+    cursor:pointer;
+    border-radius:5px;
+}    
+.payment-card{
+    background:#f8f8f8;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+}    
+.row{
+    display:flex;
+    gap:20px;
+}    
+.col{
+    flex:1;
+}    
+.checkout-right{
+    width:35%;
+}    
+.summary-card{
+    background:#f8f8f8;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:20px;
+}    
+.coupon{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}  
+.coupon input{
+    flex:1;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}    
+.apply-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+.bill p{
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+}    
+.bill h3{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+}
+.pay-btn{
+    width:100%;
+    background:orange;
+    border:none;
+    padding:15px;
+    color:white;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+.payment-icons img{
+    height:30px;
+}
+
