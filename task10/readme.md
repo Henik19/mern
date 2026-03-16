@@ -14,7 +14,6 @@ CSS3
 1. Navbar
 2. Hero Section
 3. Footer
-
 ## Animation Explanation
 
 The image animation is created using CSS `@keyframes` and `transform`.
