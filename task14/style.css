@@ -1,0 +1,26 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+h1 {
+    color: #333;
+}
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    border-radius: 12px;
+}
+button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+#output {
+    margin-top: 20px;
+    font-size: 18px;
+}
