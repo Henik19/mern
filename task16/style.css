@@ -1,75 +1,42 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+body{
+  font-family: Arial;
+  background-color: #f0f0f0;
 }
-.navbar {
+.navbar{
+  background-color: white;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
 }
-.navbar h2 {
-  font-size: 18px;
-}
-.navbar button {
-  padding: 6px 15px;
-  border: 1px solid #ccc;
-  background: #fff;
+.navbar button{
+  padding: 5px 10px;
   cursor: pointer;
 }
-.search-area {
-  padding: 20px 30px;
-  display: flex;
-  gap: 10px;
+.search-area{
+  margin: 15px;
 }
-.search-area input {
-  padding: 8px;
+.search-area input{
+  padding: 6px;
   width: 200px;
+}
+#cardsContainer{
+  margin: 15px;
+}
+.card{
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
 }
-.search-area button {
-  padding: 8px 15px;
-  background: #6c63ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-#cardsContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  padding: 20px 30px;
-}
-.card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #eee;
-}
-.card p {
+.card p{
   font-size: 14px;
-  margin-bottom: 5px;
 }
-#noResult {
+#noResult{
   display: none;
-  text-align: center;
-  padding: 20px;
-  color: #888;
-}
-@media (max-width: 768px) {
-  #cardsContainer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  }
-@media (max-width: 500px) {
-  #cardsContainer {
-    grid-template-columns: 1fr;
-  }
+  margin: 15px;
+  color: red;
 }
