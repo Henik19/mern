@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Service Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+    <div class="logo">MyService</div>
+
+    <ul>
+        <li>Home</li>
+        <li>Services</li>
+        <li>About Us</li>
+        <li>Contact</li>
+    </ul>
+
+    <div class="user">
+        <span>henik</span>
+        <button class="logout">Logout</button>
+    </div>
+</nav>
+<div class="main">
+    <div class="left card-box">
+        <h2>Added Items</h2>
+
+        <div class="table-head">
+            <span>S.No</span>
+            <span>Service Name</span>
+            <span>Price</span>
+        </div>
+
+        <ul id="cartList">
+            <p class="empty">No Items Added</p>
+            <small>Add items to the cart from the services bar</small>
+        </ul>
+
+        <h3>Total Amount ₹ <span id="total">0</span></h3>
+
+        <div class="form">
+            <h3>Book Now</h3>
+            <input type="text" placeholder="Full Name" id="name">
+            <input type="email" placeholder="Email" id="email">
+            <input type="password" placeholder="Password" id="password">
+
+            <button onclick="bookNow()">Book Now</button>
+            <p id="msg"></p>
+        </div>
+    </div>
+
+    <div class="right card-box">
+        <h2>Browse Our Services</h2>
+        <p>Click on the add to cart button to add the services to your cart or press skip</p>
+
+        <div id="services"></div>
+
+        <div class="bottom">
+            <button onclick="addToCart()">Add to Cart</button>
+            <button onclick="bookNow()">Book Now</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
