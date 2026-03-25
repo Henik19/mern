@@ -1,0 +1,395 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+}
+.logo{
+    margin: 0;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-links li {
+    cursor: pointer;
+}
+.nav-links li:hover {
+    color: blue;
+}
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logout {
+    background: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: rgb(194, 105, 105);
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 80px;
+    background: #f9f9f9;
+}
+.left{
+    width: 50%;
+}
+.mainhead {
+    font-size: 40px;
+    line-height: 1.3;
+}
+.mainhead span {
+    color: #3b5cff;
+}
+.left p {
+    margin-top: 15px;
+    color: #555;
+    font-size: 16px;
+}
+.left input {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #3b5cff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.left input:hover {
+    background: #2a43cc;
+}
+.right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.right img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+}
+
+.overview {
+    padding: 4px 50px;
+    background: rgb(55, 55, 213);
+    text-align: center;
+}
+.heading {
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+.boxes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.box h2 {
+    font-size: 28px;
+    color: black;
+    margin-bottom: 10px;
+}
+.box p {
+    color: black;
+    font-size: 14px;
+}
+#booking {
+    background: #f5f7ff;
+    padding: 40px;
+}
+.hero1{
+    display: flex;
+    gap: 20px;
+}
+.left-card, .right-card {
+    width: 50%;
+}
+.left-card{
+    background: white;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.right-card {
+    background: white;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+.service-info {
+    display: flex;
+    gap: 10px;
+}
+.price {
+    color: #3b5cff;
+    font-weight: bold;
+}
+.add-btn {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    background: #e6f4ea;
+    color: green;
+    cursor: pointer;
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#cart-items {
+    margin: 10px 0;
+}
+.right-card input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.remove-btn {
+    background: #fdecea;
+    color: red;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+#bookNow,#bookBtn{
+    width: 30%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #3b5cff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+footer {
+    background-color: #f5f8fd;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+.footer-newsletter {
+    background-color: #4da6ff;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 10px;
+}
+.footer-newsletter h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.footer-newsletter .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.footer-newsletter input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.footer-newsletter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #4da6ff;
+    cursor: pointer;
+    font-weight: bold;
+}
+.footer-newsletter button:hover {
+    background-color: #e6f0ff;
+}
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px 20px;
+}
+.footer-section {
+    flex: 1 1 200px;
+    margin: 10px;
+}
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+.footer-section ul li a:hover {
+    color: #4da6ff;
+}
+.footer-section.social .social-icons a img {
+    width: 25px;
+    margin-right: 10px;
+}
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #e6f0ff;
+    color: #333;
+}/* Footer Styles */
+footer {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f5f8fd;
+}
+
+/* Features Section */
+.footer-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.footer-features .feature {
+    flex: 1 1 220px;
+    margin: 20px;
+}
+
+.footer-features .feature img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.footer-features .feature h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-features .feature p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+    background-color: #4da6ff;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px 20px;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-newsletter h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.footer-newsletter .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-newsletter input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.footer-newsletter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #4da6ff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.footer-newsletter button:hover {
+    background-color: #e6f0ff;
+}
+
+/* Footer Content */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px 20px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #4da6ff;
+}
+
+/* Social icons */
+.footer-section.social .social-icons a img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #e6f0ff;
+    color: #333;
+}
