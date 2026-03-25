@@ -1,29 +1,38 @@
-# Mini Laundry Booking App
+# Laundry Booking App
 
+A simple **Laundry Booking Web Application** that allows users to select services, calculate totals, and send a confirmation email using **EmailJS**.  
+
+---
+
+## Project Overview
+
+The Laundry Booking App provides:
+
+- Dynamic service selection from a cart
+- Automatic calculation of total cost
+- Booking confirmation with a unique order ID
+- Email confirmation sent via **EmailJS**
+- Simple and responsive UI
+
+Built using **HTML, CSS, and JavaScript**, with **EmailJS** for email notifications.
+
+---
 
 ## Features
-- Dynamic Service List  
-- Cart Functionality  
-- Form Validation
-- Smooth Scroll
-- Interactive Feedback
 
+- Add multiple laundry services to a booking cart
+- Dynamically calculate total price
+- Generate a unique order ID for each booking
+- Send booking confirmation email with details
+- Display success/error messages after booking
+- Responsive and user-friendly UI
+
+---
 
 ## Technologies Used
-- HTML  
-- CSS  
-- JavaScript
 
-## How It Works
-1. Services are displayed dynamically from a pre-defined array in JavaScript.  
-2. Users can click **"Add Item"** to add a service to the cart.  
-3. Users can remove items from the cart by clicking the ❌ button.  
-4. Total amount updates automatically as items are added or removed.  
-5. Users fill in their **name, email, and phone number in the booking form.  
-6. On clicking **Book Now**, the form validates all fields and cart items.  
-7. Successful bookings show a confirmation message and reset the form and cart.
+- HTML – Markup for the booking form and layout
+- CSS– Styling and responsive design
+- JavaScript  – Cart functionality, form handling, and EmailJS integration
+- EmailJS – Sending emails without a backend
 
-## How to Run
-1. Download or clone the repository.  
-2. Open `index.html` in your browser.  
-3. Interact with the services, add items to the cart, and try the booking form.

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laundry App</title>
     <link rel="stylesheet" href="style.css">
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>emailjs.init("YOUR_PUBLIC_KEY");</script>
 </head>
 <body>
 
@@ -26,13 +29,12 @@
 <!-- HERO -->
 <div class="hero">
     <div class="left">
-        <h1>Revitalize your cloth with expert <span>Laundry Services!</span></h1>
+        <h1 class="mainhead">Revitalize your cloth with expert <span>Laundry Services!</span></h1>
         <p>Premium cleaning services at affordable prices.</p>
         <button id="bookBtn">🗓️ Book a service today</button>
     </div>
-
     <div class="right">
-        <img src="images/engin-akyurt-yCYVV8-kQNM-unsplash.jpg" width="300">
+        <img src="images/engin-akyurt-yCYVV8-kQNM-unsplash.jpg" alt="Laundry Image">
     </div>
 </div>
 
@@ -55,81 +57,79 @@
     </div>
 </section>
 
+<!-- QUALITY DESCRIPTION -->
+<section class="quality">
+    <h2>Our Quality Promise</h2>
+    <p>We handle each garment with care, using eco-friendly detergents and professional techniques. Guaranteed satisfaction and timely delivery for every order.</p>
+</section>
+
 <!-- BOOKING -->
 <section id="booking">
     <div class="hero1">
-
         <!-- LEFT: Services -->
         <div class="left-card">
             <h2>Our Services</h2>
             <hr>
-            <div id="service-list"></div> 
+            <div id="service-list"></div>
         </div>
 
         <!-- RIGHT: Cart + Booking -->
         <div class="right-card">
             <h3>Added Items</h3>
             <hr>
-
             <div class="cart-header">
                 <span>S.No</span>
                 <span>Service</span>
                 <span>Price</span>
             </div>
-
-            <div id="cart-items">
-                <p>No items added</p>
-            </div>
-
+            <div id="cart-items"><p>No items added</p></div>
             <h4 id="total">Total Amount: ₹0</h4>
 
             <h3>Book Now</h3>
             <input type="text" id="name" placeholder="Full Name">
             <input type="email" id="email" placeholder="Email">
             <input type="text" id="phone" placeholder="Phone Number">
-
             <button id="bookNow">Book Now</button>
             <p id="message"></p>
         </div>
-
     </div>
 </section>
+
 <!-- FOOTER -->
 <footer>
     <!-- Features Section -->
     <div class="footer-features">
         <div class="feature">
-            <img src="images\ap.jpg" alt="Premium Services">
+            <img src="images/ap.jpg" alt="Premium Services">
             <h4>Premium Services</h4>
-            <p>Elevate your wardrobe with our meticulous dry cleaning, ensuring garments look and feel as good as new.</p>
+            <p>Meticulous dry cleaning ensuring garments look and feel as good as new.</p>
         </div>
         <div class="feature">
-            <img src="images\qs.jpg" alt="Quick Support">
+            <img src="images/qs.jpg" alt="Quick Support">
             <h4>Quick Support</h4>
-            <p>We're committed to providing prompt solutions to ensure your experience is smooth and worry-free.</p>
+            <p>Prompt solutions for a smooth, worry-free experience.</p>
         </div>
         <div class="feature">
-            <img src="images\hfd.png" alt="Hassle Free Delivery">
+            <img src="images/hfd.png" alt="Hassle Free Delivery">
             <h4>Hassle Free Delivery</h4>
-            <p>Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
+            <p>Convenient pickup and delivery options tailored to your schedule.</p>
         </div>
         <div class="feature">
-            <img src="images\ap.jpg" alt="Affordable Prices">
+            <img src="images/ap.jpg" alt="Affordable Prices">
             <h4>Affordable Prices</h4>
-            <p>Experience exceptional care without breaking the bank – our affordable prices make laundry day stress-free.</p>
+            <p>Exceptional care at stress-free prices.</p>
         </div>
     </div>
 
     <!-- Newsletter Section -->
     <div class="footer-newsletter">
-        <div class="newsletter-text">
-            <h2>Subscribe to our newsletter.</h2>
-        </div>
-        <div class="newsletter-form">
-            <input type="text" placeholder="Full name">
-            <input type="email" placeholder="Email">
-            <button>Subscribe</button>
-        </div>
+        <h2>Subscribe to our newsletter</h2>
+        <form id="newsletterForm" class="newsletter-form">
+            <input type="text" placeholder="Full name" id="newsletter-name">
+            <input type="email" placeholder="Email" id="newsletter-email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <p id="newsletter-msg"></p>
     </div>
 
     <!-- Footer Content -->
@@ -138,7 +138,6 @@
             <h3>Logo</h3>
             <p>Lorem Ipsum Dolor Sit Amet Consectetur. Sed At Congue.</p>
         </div>
-
         <div class="footer-section links">
             <h3>Important Links</h3>
             <ul>
@@ -149,20 +148,18 @@
                 <li><a href="#">Refund Policy</a></li>
             </ul>
         </div>
-
         <div class="footer-section contact">
             <h3>Contact</h3>
             <p>mail@site.com</p>
             <p>+91 91234 56780</p>
         </div>
-
         <div class="footer-section social">
             <h3>Follow Us</h3>
             <div class="social-icons">
-                <a href="#"><img src="images\ig.jpg" alt="Instagram"></a>
-                <a href="#"><img src="images\fb.png" alt="Facebook"></a>
-                <a href="#"><img src="images\tw.png" alt="Twitter"></a>
-                <a href="#"><img src="images\yt.png" alt="YouTube"></a>
+                <a href="#"><img src="images/ig.jpg" alt="Instagram"></a>
+                <a href="#"><img src="images/fb.png" alt="Facebook"></a>
+                <a href="#"><img src="images/tw.png" alt="Twitter"></a>
+                <a href="#"><img src="images/yt.png" alt="YouTube"></a>
             </div>
         </div>
     </div>
