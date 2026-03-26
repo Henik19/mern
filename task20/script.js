@@ -1,25 +1,31 @@
+//EmailJS CONFIG
+const EMAIL_CONFIG = {
+    publicKey: ENV.PUBLIC_KEY,
+    serviceId: ENV.SERVICE_ID,
+    templateId: ENV.TEMPLATE_ID
+};
+
+//  ELEMENTS 
 const bookBtn = document.getElementById("bookBtn");
 const bookingSection = document.getElementById("booking");
 
-bookBtn.addEventListener("click", () => {
-    bookingSection.scrollIntoView({ behavior: "smooth" });
-});
+const serviceList = document.getElementById("service-list");
+const cartBox = document.getElementById("cart-items");
+const totalText = document.getElementById("total");
 
-const cartContainer = document.getElementById("cart-items");
-const totalElement = document.getElementById("total");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
+
 const bookNowBtn = document.getElementById("bookNow");
 const message = document.getElementById("message");
 
-const newsletterForm = document.getElementById("newsletterForm");
-const newsletterMsg = document.getElementById("newsletter-msg");
-const newsletterName = document.getElementById("newsletter-name");
-const newsletterEmail = document.getElementById("newsletter-email");
+//  SCROLL
+bookBtn.onclick = function () {
+    bookingSection.scrollIntoView({ behavior: "smooth" });
+};
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let total = 0;
+// SERVICES
 const services = [
     { name: "Dry Cleaning", price: 200 },
     { name: "Ironing", price: 50 },
@@ -27,131 +33,159 @@ const services = [
     { name: "Jacket Cleaning", price: 300 }
 ];
 
-const serviceList = document.getElementById("service-list");
-function renderServices() {
-    serviceList.innerHTML = "";
-    services.forEach((service, index) => {
-        const div = document.createElement("div");
-        div.classList.add("service");
-        div.innerHTML = `
-            <div class="service-info">
-                <span class="service-name">${service.name}</span>
-                <span class="price">₹${service.price}</span>
-            </div>
-            <button class="add-btn">Add Item</button>
-        `;
-        serviceList.appendChild(div);
+let cart = [];
 
-        const btn = div.querySelector(".add-btn");
-        btn.addEventListener("click", () => addToCart(service));
-    });
+// LOAD SERVICES 
+function showServices() {
+    serviceList.innerHTML = "";
+
+    for (let i = 0; i < services.length; i++) {
+        let item = services[i];
+
+        let div = document.createElement("div");
+        div.className = "service";
+
+        div.innerHTML = `
+            <span>${item.name} - ₹${item.price}</span>
+            <button>Add</button>
+        `;
+
+        div.querySelector("button").onclick = function () {
+            cart.push(item);
+            updateCart();
+        };
+
+        serviceList.appendChild(div);
+    }
 }
 
-function renderCart() {
-    cartContainer.innerHTML = "";
-    total = 0;
+// UPDATE CART
+function updateCart() {
+    cartBox.innerHTML = "";
+    let total = 0;
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>No items added</p>";
-        totalElement.innerText = "Total Amount: ₹0";
-        localStorage.setItem("cart", JSON.stringify(cart));
+        cartBox.innerHTML = "<p>No items added</p>";
+        totalText.innerText = "Total Amount: ₹0";
         return;
     }
 
-    cart.forEach((item, index) => {
-        const row = document.createElement("div");
-        row.classList.add("cart-row");
+    for (let i = 0; i < cart.length; i++) {
+        let item = cart[i];
+
+        let row = document.createElement("div");
+        row.className = "cart-row";
+
         row.innerHTML = `
-            <span>${index + 1}</span>
+            <span>${i + 1}</span>
             <span>${item.name}</span>
             <span>₹${item.price}</span>
-            <button class="remove-btn">❌</button>
+            <button>X</button>
         `;
 
-        row.querySelector(".remove-btn").addEventListener("click", () => {
-            cart.splice(index, 1);
-            renderCart();
-        });
+        row.querySelector("button").onclick = function () {
+            cart.splice(i, 1);
+            updateCart();
+        };
 
-        cartContainer.appendChild(row);
+        cartBox.appendChild(row);
         total += item.price;
-    });
+    }
 
-    totalElement.innerText = `Total Amount: ₹${total}`;
-    localStorage.setItem("cart", JSON.stringify(cart));
+    totalText.innerText = "Total Amount: ₹" + total;
 }
 
-function addToCart(service) {
-    cart.push(service);
-    renderCart();
+// VALIDATION
+function checkEmail(email) {
+    return email.includes("@") && email.includes(".");
 }
-bookNowBtn.addEventListener("click", () => {
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
 
-    if (!name || !email || !phone) {
-        showMessage("Please fill all fields!", "red");
-        return;
-    }
-    if (!email.includes("@")) {
-        showMessage("Enter a valid email!", "red");
-        return;
-    }
-    if (phone.length !== 10 || isNaN(phone)) {
-        showMessage("Enter valid phone number!", "red");
-        return;
-    }
-    if (cart.length === 0) {
-        showMessage("Cart is empty!", "red");
-        return;
-    }
+function checkPhone(phone) {
+    return phone.length === 10 && !isNaN(phone);
+}
 
-    emailjs.init("fzmZwECbEPXTGOoA5");
-    emailjs.send("service_kazkfmt", "template_2ksrp5g", {
-        name: name,
-        email: email,
-        phone: phone,
-        services: cart.map(i => i.name).join(", "),
-        total: total
-    }).then(() => {
-        showMessage("✅ Booking Successful! Confirmation email sent.", "green");
-        clearBookingForm();
-    }).catch(err => {
-        console.error("EmailJS error:", err);
-        showMessage("Booking successful but failed to send email.", "orange");
-        clearBookingForm();
-    });
-});
-
-function showMessage(msg, color) {
-    message.innerText = msg;
+// MESSAGE 
+function showMessage(text, color) {
+    message.innerText = text;
     message.style.color = color;
 }
 
-function clearBookingForm() {
+// CLEAR
+function clearForm() {
     nameInput.value = "";
     emailInput.value = "";
     phoneInput.value = "";
     cart = [];
-    renderCart();
+    updateCart();
 }
 
-newsletterForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const nName = newsletterName.value.trim();
-    const nEmail = newsletterEmail.value.trim();
+//  BOOK 
+bookNowBtn.onclick = function () {
 
-    if (!nName || !nEmail || !nEmail.includes("@")) {
-        newsletterMsg.innerText = "Enter valid name and email!";
-        newsletterMsg.style.color = "red";
+    let name = nameInput.value.trim();
+    let email = emailInput.value.trim();
+    let phone = phoneInput.value.trim();
+
+    if (name === "" || email === "" || phone === "") {
+        showMessage("Please fill all fields", "red");
         return;
     }
 
-    newsletterMsg.innerText = "✅ Subscribed successfully!";
-    newsletterMsg.style.color = "green";
-    newsletterForm.reset();
-});
+    if (!checkEmail(email)) {
+        showMessage("Invalid email", "red");
+        return;
+    }
 
-renderServices();
-renderCart();
+    if (!checkPhone(phone)) {
+        showMessage("Invalid phone", "red");
+        return;
+    }
+
+    if (cart.length === 0) {
+        showMessage("Cart is empty", "red");
+        return;
+    }
+
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].price;
+    }
+
+    let orderId = "ORD" + Math.floor(Math.random() * 10000);
+
+    
+    emailjs.send(
+        EMAIL_CONFIG.serviceId,
+        EMAIL_CONFIG.templateId,
+        {
+            name: name,
+            email: email,
+            phone: phone,
+            services: cart.map(item => item.name).join(", "),
+            total: total,
+            order_id: orderId
+        },
+        {
+            publicKey: EMAIL_CONFIG.publicKey
+        }
+    )
+    .then(function (response) {
+        console.log("SUCCESS:", response);
+    
+        showMessage("Booking successful! Order ID: " + orderId, "green");
+        clearForm();
+    })
+    .catch(function (error) {
+        console.log("FULL ERROR:", error);
+    
+        if (error && error.text) {
+            console.log("TEXT:", error.text);
+        }
+    
+        showMessage("Email failed. Check console.", "red");
+    });
+};
+
+// INIT
+showServices();
+updateCart();
