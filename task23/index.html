@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppName Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+            <div class="text-xl font-bold">🚀 AppName</div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="hover:text-blue-600">Features</a>
+                <a href="#" class="hover:text-blue-600">Pricing</a>
+                <a href="#" class="hover:text-blue-600">About</a>
+                <a href="#" class="hover:text-blue-600">Contact</a>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Get Started
+                </button>
+            </div>
+
+            <button id="menuBtn" class="md:hidden text-2xl">
+                ☰
+            </button>
+
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 space-y-3">
+            <a href="#" class="block">Features</a>
+            <a href="#" class="block">Pricing</a>
+            <a href="#" class="block">About</a>
+            <a href="#" class="block">Contact</a>
+            <button class="w-full bg-blue-600 text-white py-2 rounded-lg">
+                Get Started
+            </button>
+        </div>
+    </nav>
+
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
+
+            <div class="flex-1 text-center lg:text-left">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 leading-tight">
+                    Build Amazing Products Faster
+                </h1>
+
+                <p class="mb-6 text-sm sm:text-base md:text-lg">
+                    The all-in-one platform for teams to collaborate, build, and ship products users love.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold">
+                        Start Free Trial
+                    </button>
+
+                    <button class="border border-white px-6 py-3 rounded-lg">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-1 w-full">
+                <img src="carrie-allen-www-carrieallen-com-IXbUjYOjtf8-unsplash.jpg"
+                    class="w-full h-52 sm:h-64 md:h-80 lg:h-[350px] object-cover rounded-xl shadow-lg">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-10 md:py-14 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">
+                Powerful Features
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h3 class="font-semibold text-lg">Lightning Fast</h3>
+                    <p class="text-gray-600 text-sm">
+                        Optimized for speed and performance.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-3xl mb-3">🔒</div>
+                    <h3 class="font-semibold text-lg">Secure</h3>
+                    <p class="text-gray-600 text-sm">
+                        Enterprise-grade security built-in.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-semibold text-lg">Analytics</h3>
+                    <p class="text-gray-600 text-sm">
+                        Real-time insights and reports.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-6">
+        <div
+            class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+
+            <div class="font-bold">🚀 AppName</div>
+
+            <div class="text-sm text-gray-400">
+                2026 AppName. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
+
+        btn.onclick = () => {
+            menu.classList.toggle("hidden");
+        };
+    </script>
+
+</body>
+
+</html>
