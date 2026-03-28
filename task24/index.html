@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations & UI Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+    <div class="max-w-6xl mx-auto px-6 py-10 space-y-12">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold">Animations & UI Feedback</h1>
+            <p class="text-gray-400 mt-2">Hover and interact with elements</p>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Built-in Animations</h2>
+            <div class="grid md:grid-cols-4 gap-6 text-center">
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <div
+                        class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full mx-auto animate-spin">
+                </div>
+                    <p class="mt-3 text-sm text-gray-300">Loading Spinner</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <div class="w-5 h-5 bg-green-500 rounded-full mx-auto animate-ping"></div>
+                    <p class="mt-3 text-sm text-gray-300">Notification Ping</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <div class="w-16 h-4 bg-gray-500 mx-auto animate-pulse rounded"></div>
+                    <p class="mt-3 text-sm text-gray-300">Skeleton Loader</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl">
+                    <div class="w-5 h-5 bg-orange-500 rounded-full mx-auto animate-bounce"></div>
+                    <p class="mt-3 text-sm text-gray-300">Bounce Effect</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Button Animations</h2>
+            <div class="flex flex-wrap gap-4">
+                <button class="bg-blue-500 px-4 py-2 rounded transition hover:scale-110">
+                    Scale
+                </button>
+                <button
+                    class="bg-purple-500 px-4 py-2 rounded transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                    Shadow + Scale
+                </button>
+                <button class="bg-green-500 px-4 py-2 rounded transition-colors duration-300 hover:bg-green-700">
+                    Color Change
+                </button>
+                <button class="bg-orange-500 px-4 py-2 rounded transition-transform duration-300 hover:rotate-6">
+                    Rotate
+                </button>
+                <button class="bg-pink-500 px-4 py-2 rounded transition-transform duration-300 hover:-translate-y-1">
+                    Lift
+                </button>
+                <button
+                    class="bg-cyan-500 px-4 py-2 rounded transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95">
+                    Combined
+                </button>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Card Animations</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800 p-6 rounded-xl transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    Hover Lift Effect
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl transition duration-300 hover:scale-105 hover:rotate-1">
+                    Scale & Rotate
+                </div>
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-transparent hover:border-purple-500 transition duration-300">
+                    Border Reveal
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Notification Badges</h2>
+            <div class="flex gap-6">
+                <div class="relative">
+                    <div class="w-10 h-10 bg-slate-700 rounded flex items-center justify-center">🔔</div>
+                    <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-ping"></span>
+                </div>
+                <div class="relative">
+                    <div class="w-10 h-10 bg-slate-700 rounded flex items-center justify-center">💬</div>
+                    <span class="absolute top-0 right-0 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></span>
+                </div>
+                <div class="relative">
+                    <div class="w-10 h-10 bg-slate-700 rounded flex items-center justify-center">📧</div>
+                    <span class="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full animate-bounce"></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Loading States</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800 p-6 rounded-xl animate-pulse">
+                    <div class="h-4 bg-gray-600 mb-2 rounded"></div>
+                    <div class="h-4 bg-gray-600 w-3/4 rounded"></div>
+                </div>
+                <button class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
+                    <span class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    Loading...
+                </button>
+                <div class="flex gap-2 items-center">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full animate-bounce"></div>
+                    <div class="w-3 h-3 bg-purple-500 rounded-full animate-bounce delay-150"></div>
+                    <div class="w-3 h-3 bg-purple-500 rounded-full animate-bounce delay-300"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl mb-4">Staggered Animations</h2>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-blue-500 p-4 rounded opacity-0 animate-[fadeInUp_0.5s_forwards]">
+                    Delay 0
+                </div>
+                <div class="bg-purple-500 p-4 rounded opacity-0 animate-[fadeInUp_0.5s_0.15s_forwards]">
+                    Delay 150ms
+                </div>
+                <div class="bg-pink-500 p-4 rounded opacity-0 animate-[fadeInUp_0.5s_0.3s_forwards]">
+                    Delay 300ms
+                </div>
+                <div class="bg-orange-500 p-4 rounded opacity-0 animate-[fadeInUp_0.5s_0.45s_forwards]">
+                    Delay 450ms
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
