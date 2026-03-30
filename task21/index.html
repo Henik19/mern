@@ -1,92 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Delivery</title>
+
+  <!-- google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!-- header section -->
   <header>
+
     <nav class="navbar">
+
       <div class="logo">
         <img src="assets/logo.jpg" alt="Logo">
       </div>
 
-      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <!-- menu button -->
+      <button class="hamburger" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#">FOOD DELIVERY</a></li>
         <li><a href="#">HOW IT WORKS</a></li>
         <li><a href="#">OUR CITIES</a></li>
         <li><a href="#">SIGN-UP</a></li>
       </ul>
+
     </nav>
 
     <div class="hero-text-box">
-      <h1>GOODBYE JUNK FOOD<br>HELLO SUPER HEALTHY FOOD</h1>
+      <h1>
+        GOODBYE JUNK FOOD <br>
+        HELLO SUPER HEALTHY FOOD
+      </h1>
+
       <a href="#" class="btn btn-primary">I'm Hungry</a>
       <a href="#" class="btn btn-secondary">Show me more</a>
     </div>
+
   </header>
 
+  <!-- how it works -->
   <section class="how-it-works">
+
     <div class="container">
+
       <div class="phone">
         <img src="assets/mockup.jpg" alt="App Preview">
       </div>
+
       <div class="steps">
         <h2>How It Works</h2>
+
         <ol>
           <li>
             <span class="step-number">1</span>
             Choose plan that fits best for your need and sign-up today
           </li>
+
           <li>
             <span class="step-number">2</span>
             Pay for the plan and download the app
           </li>
+
           <li>
             <span class="step-number">3</span>
             You are done start ordering!!
           </li>
         </ol>
+
         <div class="download-buttons">
           <a href="#">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
           </a>
+
           <a href="#">
             <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
           </a>
         </div>
+
       </div>
+
     </div>
   </section>
 
+  <!-- cities -->
   <section class="city">
+
     <h1>We're currently in these cities</h1>
+
     <div class="main">
 
       <div class="card">
         <img src="assets/lisbon.jpg" alt="Lisbon">
         <h2>Lisbon</h2>
+
         <div class="info">
           <ion-icon name="person"></ion-icon>
           <p>1600+ Happy Eaters</p>
         </div>
+
         <div class="info">
           <ion-icon name="star"></ion-icon>
           <p>50+ Chefs</p>
         </div>
+
         <div class="info">
           <ion-icon name="logo-twitter"></ion-icon>
           <a href="#">@omnifood_li</a>
@@ -96,14 +126,17 @@
       <div class="card">
         <img src="assets/london.jpg" alt="London">
         <h2>London</h2>
+
         <div class="info">
           <ion-icon name="person"></ion-icon>
           <p>1600+ Happy Eaters</p>
         </div>
+
         <div class="info">
           <ion-icon name="star"></ion-icon>
           <p>50+ Chefs</p>
         </div>
+
         <div class="info">
           <ion-icon name="logo-twitter"></ion-icon>
           <a href="#">@omnifood_ld</a>
@@ -113,14 +146,17 @@
       <div class="card">
         <img src="assets/berlin.jpg" alt="Berlin">
         <h2>Berlin</h2>
+
         <div class="info">
           <ion-icon name="person"></ion-icon>
           <p>1400+ Happy Eaters</p>
         </div>
+
         <div class="info">
           <ion-icon name="star"></ion-icon>
           <p>70+ Chefs</p>
         </div>
+
         <div class="info">
           <ion-icon name="logo-twitter"></ion-icon>
           <a href="#">@omnifood_br</a>
@@ -130,14 +166,17 @@
       <div class="card">
         <img src="assets/sanF.jpg" alt="San Francisco">
         <h2>San Francisco</h2>
+
         <div class="info">
           <ion-icon name="person"></ion-icon>
           <p>1800+ Happy Eaters</p>
         </div>
+
         <div class="info">
           <ion-icon name="star"></ion-icon>
           <p>50+ Chefs</p>
         </div>
+
         <div class="info">
           <ion-icon name="logo-twitter"></ion-icon>
           <a href="#">@omnifood_sf</a>
@@ -147,8 +186,11 @@
     </div>
   </section>
 
+  <!-- testimonial -->
   <section class="testimonial">
+
     <h1>our customer can't live without us</h1>
+
     <div class="testi">
 
       <div class="testi-card">
@@ -172,20 +214,25 @@
     </div>
   </section>
 
+  <!-- pricing -->
   <section class="pricing">
+
     <h2>START EATING HEALTHY TODAY</h2>
+
     <div class="plans-row">
 
       <div class="plan-card">
         <h3>PREMIUM</h3>
         <p class="price"><span class="amount">$399</span> /month</p>
         <p class="price-note">That's only 13.90$ per meal</p>
+
         <ul>
           <li class="check">✔ 1 meal everyday</li>
           <li class="check">✔ Order 24*7</li>
           <li class="check">✔ Access to newest creations</li>
           <li class="check">✔ Free delivery</li>
         </ul>
+
         <button class="btn-fill">Sign up</button>
       </div>
 
@@ -193,12 +240,14 @@
         <h3>PRO</h3>
         <p class="price"><span class="amount">$199</span> /month</p>
         <p class="price-note">That's only 10.90$ per meal</p>
+
         <ul>
           <li class="check">✔ 1 meal in 10</li>
           <li class="check">✔ Order 24*7</li>
           <li class="check">✔ Access to newest creations</li>
           <li class="check">✔ Free delivery</li>
         </ul>
+
         <button class="btn-outline">Sign up</button>
       </div>
 
@@ -206,20 +255,25 @@
         <h3>STARTER</h3>
         <p class="price"><span class="amount">19$</span> /meal</p>
         <p class="price-note">That's 19$ per meal</p>
+
         <ul>
           <li class="check">✔ 1 meal month</li>
           <li class="check">✔ Order 24*7</li>
           <li class="cross">✗ Access to newest creations</li>
           <li class="check">✔ Free delivery</li>
         </ul>
+
         <button class="btn-outline">Sign up</button>
       </div>
 
     </div>
   </section>
 
+  <!-- footer -->
   <footer class="footer">
+
     <div class="footer-row">
+
       <nav class="footer-links">
         <a href="#">About us</a>
         <a href="#">Blog</a>
@@ -227,17 +281,30 @@
         <a href="#">iOS App</a>
         <a href="#">Android App</a>
       </nav>
+
       <div class="social-icons">
         <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
         <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
         <a href="#"><ion-icon name="logo-google"></ion-icon></a>
         <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
       </div>
+
     </div>
-    <p class="copyright">Copyright &copy; 2026 by Omnifood. All rights reserved.</p>
+
+    <p class="copyright">
+      Copyright &copy; 2026 by Omnifood. All rights reserved.
+    </p>
+
   </footer>
 
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-</body>
+  <!-- js -->
+  <script>
+    function toggleMenu(){
+      document.getElementById("navLinks").classList.toggle("open");
+    }
+  </script>
 
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+</body>
 </html>
