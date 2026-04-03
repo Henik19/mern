@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .certificate-wrapper {
+      width: 780px;
+      padding: 10px;
+      background: transparent;
+    }
+
+    .certificate {
+      width: 100%;
+      aspect-ratio: 780 / 560;
+      position: relative;
+      background: #fff;
+      overflow: hidden;
+      border: 3px solid #222;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+
+    /* Pink feather / floral corner watercolor effect */
+    .corner {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      opacity: 0.55;
+    }
+    .corner-tl { top: 0; left: 0; }
+    .corner-tr { top: 0; right: 0; transform: scaleX(-1); }
+    .corner-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+    .corner-br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+    /* SVG feather petal shapes */
+    .corner svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Decorative gold border frame */
+    .border-frame {
+      position: absolute;
+      top: 28px; left: 28px; right: 28px; bottom: 28px;
+      border: 2px solid #c82a81;
+      pointer-events: none;
+    }
+    .border-frame::before {
+      content: '';
+      position: absolute;
+      top: 5px; left: 5px; right: 5px; bottom: 5px;
+      border: 1px solid #c82a81;
+    }
+
+    /* Inner content */
+    .content {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 80px 40px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .ornament {
+      font-size: 22px;
+      color: #c82a81;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      color: #2b2b2b;
+    }
+
+    .subtitle {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #555;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .recipient-line {
+      width: 340px;
+      border-bottom: 1.5px solid #888;
+      margin-bottom: 6px;
+    }
+
+    .recipient-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      color: #2b2b2b;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .appreciation-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 11.5px;
+      color: #444;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .event-name {
+      font-family: 'Lato', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+
+    /* Bottom row: signature | seal | date */
+    .bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 480px;
+      margin-top: 4px;
+    }
+
+    .signature-block {
+      text-align: left;
+      min-width: 140px;
+    }
+
+    .signature-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #2b2b2b;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .sig-underline {
+      width: 130px;
+      border-bottom: 1.5px solid #888;
+      margin: 2px 0 4px;
+    }
+
+    .sig-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    .sig-role {
+      font-family: 'Lato', sans-serif;
+      font-size: 9px;
+      color: #555;
+      font-style: italic;
+    }
+
+    /* Seal */
+    .seal {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+    }
+
+    /* Date block */
+    .date-block {
+      text-align: right;
+      min-width: 130px;
+    }
+
+    .date-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #2b2b2b;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .date-underline {
+      width: 130px;
+      border-bottom: 1.5px solid #888;
+      margin: 2px 0 4px;
+      margin-left: auto;
+    }
+
+    .date-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    /* MUORAH Logo */
+    .brand-logo {
+      text-align: center;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .brand-main {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      color: #2b2b2b;
+      display: block;
+    }
+    .brand-sub {
+      font-family: 'Great Vibes', cursive;
+      font-size: 15px;
+      color: #c82a81;
+      display: block;
+      letter-spacing: 2px;
+      margin-top: -2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate-wrapper">
+    <div class="certificate">
+
+      <!-- Corner watercolor feather decorations -->
+      <div class="corner corner-tl">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="110" rx="18" ry="90" fill="#e8a0c0" opacity="0.7" transform="rotate(-30 30 110)"/>
+          <ellipse cx="60" cy="80" rx="15" ry="75" fill="#f0b8d0" opacity="0.65" transform="rotate(-15 60 80)"/>
+          <ellipse cx="90" cy="55" rx="13" ry="65" fill="#d68ab0" opacity="0.6" transform="rotate(5 90 55)"/>
+          <ellipse cx="50" cy="140" rx="12" ry="60" fill="#f5c6dc" opacity="0.55" transform="rotate(-45 50 140)"/>
+          <ellipse cx="120" cy="35" rx="10" ry="50" fill="#e090b8" opacity="0.5" transform="rotate(20 120 35)"/>
+          <ellipse cx="20" cy="60" rx="10" ry="55" fill="#f0a8c8" opacity="0.5" transform="rotate(-50 20 60)"/>
+          <ellipse cx="75" cy="110" rx="8" ry="45" fill="#c878a0" opacity="0.45" transform="rotate(-10 75 110)"/>
+        </svg>
+      </div>
+      <div class="corner corner-tr">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="110" rx="18" ry="90" fill="#e8a0c0" opacity="0.7" transform="rotate(-30 30 110)"/>
+          <ellipse cx="60" cy="80" rx="15" ry="75" fill="#f0b8d0" opacity="0.65" transform="rotate(-15 60 80)"/>
+          <ellipse cx="90" cy="55" rx="13" ry="65" fill="#d68ab0" opacity="0.6" transform="rotate(5 90 55)"/>
+          <ellipse cx="50" cy="140" rx="12" ry="60" fill="#f5c6dc" opacity="0.55" transform="rotate(-45 50 140)"/>
+          <ellipse cx="120" cy="35" rx="10" ry="50" fill="#e090b8" opacity="0.5" transform="rotate(20 120 35)"/>
+          <ellipse cx="20" cy="60" rx="10" ry="55" fill="#f0a8c8" opacity="0.5" transform="rotate(-50 20 60)"/>
+          <ellipse cx="75" cy="110" rx="8" ry="45" fill="#c878a0" opacity="0.45" transform="rotate(-10 75 110)"/>
+        </svg>
+      </div>
+      <div class="corner corner-bl">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="110" rx="18" ry="90" fill="#e8a0c0" opacity="0.7" transform="rotate(-30 30 110)"/>
+          <ellipse cx="60" cy="80" rx="15" ry="75" fill="#f0b8d0" opacity="0.65" transform="rotate(-15 60 80)"/>
+          <ellipse cx="90" cy="55" rx="13" ry="65" fill="#d68ab0" opacity="0.6" transform="rotate(5 90 55)"/>
+          <ellipse cx="50" cy="140" rx="12" ry="60" fill="#f5c6dc" opacity="0.55" transform="rotate(-45 50 140)"/>
+          <ellipse cx="120" cy="35" rx="10" ry="50" fill="#e090b8" opacity="0.5" transform="rotate(20 120 35)"/>
+          <ellipse cx="20" cy="60" rx="10" ry="55" fill="#f0a8c8" opacity="0.5" transform="rotate(-50 20 60)"/>
+          <ellipse cx="75" cy="110" rx="8" ry="45" fill="#c878a0" opacity="0.45" transform="rotate(-10 75 110)"/>
+        </svg>
+      </div>
+      <div class="corner corner-br">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="110" rx="18" ry="90" fill="#e8a0c0" opacity="0.7" transform="rotate(-30 30 110)"/>
+          <ellipse cx="60" cy="80" rx="15" ry="75" fill="#f0b8d0" opacity="0.65" transform="rotate(-15 60 80)"/>
+          <ellipse cx="90" cy="55" rx="13" ry="65" fill="#d68ab0" opacity="0.6" transform="rotate(5 90 55)"/>
+          <ellipse cx="50" cy="140" rx="12" ry="60" fill="#f5c6dc" opacity="0.55" transform="rotate(-45 50 140)"/>
+          <ellipse cx="120" cy="35" rx="10" ry="50" fill="#e090b8" opacity="0.5" transform="rotate(20 120 35)"/>
+          <ellipse cx="20" cy="60" rx="10" ry="55" fill="#f0a8c8" opacity="0.5" transform="rotate(-50 20 60)"/>
+          <ellipse cx="75" cy="110" rx="8" ry="45" fill="#c878a0" opacity="0.45" transform="rotate(-10 75 110)"/>
+        </svg>
+      </div>
+
+      <!-- Gold border frame -->
+      <div class="border-frame"></div>
+
+      <!-- Main content -->
+      <div class="content">
+        <!-- ✏️ BRAND LOGO -->
+        <div class="brand-logo">
+          <span class="brand-main">MYORAH</span>
+          <span class="brand-sub">by unnati</span>
+        </div>
+
+        <div class="title-row">
+          <span class="ornament">❧</span>
+          <span class="title">CERTIFICATE</span>
+          <span class="ornament">❧</span>
+        </div>
+
+        <p class="subtitle">Proudly Present To</p>
+<br><br><br>
+        <div class="recipient-line"></div>
+        
+        <!-- ✏️ CHANGE RECIPIENT NAME BELOW -->
+        <div class="recipient-name"></div>
+
+        <!-- ✏️ CHANGE APPRECIATION TEXT BELOW -->
+        <p class="appreciation-text">Appreciation for participation in training class events</p>
+        <!-- ✏️ CHANGE EVENT NAME BELOW -->
+        <p class="event-name">"signature self makeup master class"</p>
+
+        <div class="bottom-row">
+          <!-- LEFT: SIGNATURE -->
+          <div class="signature-block">
+            <!-- ✏️ CHANGE SIGNATURE NAME BELOW -->
+            <span class="signature-name"></span>
+            <div class="sig-underline"></div>
+            <!-- ✏️ CHANGE SIGNATORY LABEL BELOW -->
+            <div class="sig-label">Unnati Rangoonwala</div>
+            <!-- ✏️ CHANGE ROLE BELOW -->
+            <div class="sig-role">Make-up Artist &amp; Educator</div>
+          </div>
+
+          <!-- CENTER: SEAL -->
+          <div class="seal">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer gear ring -->
+              <circle cx="50" cy="50" r="46" fill="none" stroke="#c82a81" stroke-width="2.5"/>
+              <!-- Dashed inner ring -->
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#c82a81" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- Solid fill background -->
+              <circle cx="50" cy="50" r="34" fill="#c82a81" opacity="0.12"/>
+              <!-- Gear teeth (outer) -->
+              <circle cx="50" cy="50" r="46" fill="none" stroke="#c82a81" stroke-width="5" stroke-dasharray="5 4.5"/>
+              <!-- Star / emblem center -->
+              <text x="50" y="44" text-anchor="middle" font-size="18" fill="#c82a81" font-family="serif">✦</text>
+              <text x="50" y="60" text-anchor="middle" font-size="7" fill="#c82a81" font-family="'Cinzel',serif" letter-spacing="1">CERTIFIED</text>
+            </svg>
+          </div>
+
+          <!-- RIGHT: DATE -->
+          <div class="date-block">
+            <!-- ✏️ CHANGE DATE BELOW -->
+            <span class="date-value"></span>
+            <div class="date-underline"></div>
+            <span class="date-label">DATE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

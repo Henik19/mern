@@ -8,7 +8,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+    position: relative; /* needed for mobile menu positioning */
 }
 .logo {
     font-weight: bold;
