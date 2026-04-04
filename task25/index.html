@@ -1,467 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowApp Navbar</title>
+  <title>FlowApp</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: "#6366f1",
-            secondary: "#8b5cf6"
-          },
           keyframes: {
             "slide-up": {
-              "0%": { opacity: 0, transform: "translateY(40px)" },
-              "100%": { opacity: 1, transform: "translateY(0)" },
+              "0%": { opacity: 0, transform: "translateY(30px)" },
+              "100%": { opacity: 1, transform: "translateY(0)" }
             },
             "slide-left": {
-              "0%": { opacity: 0, transform: "translateX(-40px)" },
-              "100%": { opacity: 1, transform: "translateX(0)" },
+              "0%": { opacity: 0, transform: "translateX(-30px)" },
+              "100%": { opacity: 1, transform: "translateX(0)" }
             },
             "slide-right": {
-              "0%": { opacity: 0, transform: "translateX(40px)" },
-              "100%": { opacity: 1, transform: "translateX(0)" },
+              "0%": { opacity: 0, transform: "translateX(30px)" },
+              "100%": { opacity: 1, transform: "translateX(0)" }
             },
             "scale-in": {
-              "0%": { opacity: 0, transform: "scale(0.8)" },
-              "100%": { opacity: 1, transform: "scale(1)" },
+              "0%": { opacity: 0, transform: "scale(0.9)" },
+              "100%": { opacity: 1, transform: "scale(1)" }
+            },
+            "float": {
+              "0%,100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-12px)" }
             },
             "rotate-slow": {
               "0%": { transform: "rotate(0deg)" },
-              "100%": { transform: "rotate(360deg)" },
-            },
-            "float": {
-              "0%,100%": { transform: "translateY(0px)" },
-              "50%": { transform: "translateY(-20px)" },
-            },
-            "glow": {
-              "0%,100%": { boxShadow: "0 0 20px rgba(139,92,246,0.4)" },
-              "50%": { boxShadow: "0 0 40px rgba(139,92,246,0.8)" },
+              "100%": { transform: "rotate(360deg)" }
             },
             "morph": {
-              "0%,100%": { borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" },
-              "50%": { borderRadius: "60% 40% 30% 70% / 50% 60% 40% 50%" },
+              "0%,100%": { borderRadius: "30% 70% 70% 30%" },
+              "50%": { borderRadius: "60% 40% 30% 70%" }
             },
-            "gradient-move": {
-              "0%": { backgroundPosition: "0% 50%" },
-              "100%": { backgroundPosition: "100% 50%" },
+            "glow": {
+              "0%,100%": { boxShadow: "0 0 10px rgba(99,102,241,0.5)" },
+              "50%": { boxShadow: "0 0 25px rgba(99,102,241,0.9)" }
             }
           },
           animation: {
-            "slide-up": "slide-up 0.8s ease forwards",
-            "slide-left": "slide-left 0.8s ease forwards",
-            "slide-right": "slide-right 0.8s ease forwards",
-            "scale-in": "scale-in 0.6s ease forwards",
-            "rotate-slow": "rotate-slow 20s linear infinite",
-            "float": "float 6s ease-in-out infinite",
-            "glow": "glow 2s ease-in-out infinite",
-            "morph": "morph 8s ease-in-out infinite",
-            "gradient": "gradient-move 8s linear infinite",
+            "slide-up": "slide-up 0.7s ease forwards",
+            "slide-left": "slide-left 0.7s ease forwards",
+            "slide-right": "slide-right 0.7s ease forwards",
+            "scale-in": "scale-in 0.5s ease forwards",
+            "float": "float 5s ease-in-out infinite",
+            "rotate-slow": "rotate-slow 18s linear infinite",
+            "morph": "morph 6s ease-in-out infinite",
+            "glow": "glow 2s ease-in-out infinite"
           }
         }
       }
     }
   </script>
 </head>
-</head>
 
-<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white">
+<body class="bg-gray-900 text-white">
 
-  <nav class="fixed top-0 left-0 w-full z-50">
-    <div class="mx-auto max-w-7xl px-6 py-3">
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full bg-white/10 backdrop-blur border-b border-white/20 z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
 
-      <div class="flex items-center justify-between 
-                        bg-white/10 backdrop-blur-lg 
-                        border border-white/20 
-                        rounded-xl px-6 py-3 shadow-lg">
-
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg 
-                                bg-gradient-to-r from-indigo-500 to-purple-500"></div>
-          <h1 class="text-lg font-semibold tracking-wide">
-            FlowApp
-          </h1>
-        </div>
-
-        <ul class="hidden md:flex items-center gap-8 text-sm text-gray-300">
-          <li class="hover:text-white transition">Features</li>
-          <li class="hover:text-white transition">Pricing</li>
-          <li class="hover:text-white transition">Reviews</li>
-        </ul>
-
-        <div class="hidden md:block">
-          <button class="px-5 py-2 rounded-lg 
-                                   bg-gradient-to-r from-indigo-500 to-purple-600 
-                                   hover:scale-105 transition duration-300
-                                   shadow-lg shadow-purple-500/40">
-            Get Started
-          </button>
-        </div>
-
-        <div class="md:hidden">
-          <button id="menuBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-
-      </div>
-
-      <div id="mobileMenu" class="hidden mt-3 
-                        bg-white/10 backdrop-blur-lg 
-                        border border-white/20 
-                        rounded-xl p-5 space-y-4 text-center md:hidden">
-
-        <p class="hover:text-white">Features</p>
-        <p class="hover:text-white">Pricing</p>
-        <p class="hover:text-white">Reviews</p>
-
-        <button class="w-full px-5 py-2 rounded-lg 
-                               bg-gradient-to-r from-indigo-500 to-purple-600 
-                               shadow-lg shadow-purple-500/40">
-          Get Started
-        </button>
-      </div>
-
-    </div>
-  </nav>
-
-  <section
-    class="min-h-screen flex items-center relative overflow-hidden px-6 bg-gradient-to-br from-[#050816] via-[#0a0f2c] to-black text-white">
-
-    <div
-      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded"></div>
+      <h1 class="font-semibold">FlowApp</h1>
     </div>
 
-    <div class="absolute w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl left-1/3 top-20"></div>
+    <ul class="hidden md:flex gap-6 text-sm">
+      <li>Features</li>
+      <li>Pricing</li>
+      <li>Reviews</li>
+    </ul>
 
-    <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <button class="hidden md:block px-4 py-2 bg-indigo-500 rounded animate-glow">
+      Get Started
+    </button>
 
-      <div>
+    <button id="menuBtn" class="md:hidden">☰</button>
+  </div>
 
-        <div
-          class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-sm mb-6">
-          🚀 Now with AI-powered features
-          <span class="bg-purple-600 text-xs px-2 py-0.5 rounded-full">NEW</span>
-        </div>
+  <div id="mobileMenu" class="hidden text-center pb-4">
+    <p>Features</p>
+    <p>Pricing</p>
+    <p>Reviews</p>
+  </div>
+</nav>
 
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-          Build products <br>
-          <span class="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-            users love
-          </span>
-        </h1>
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
 
-        <p class="text-gray-400 mb-8 max-w-lg">
-          The all-in-one platform for teams to collaborate, design, and ship amazing products 10x faster.
-        </p>
+  <!-- grid bg -->
+  <div class="absolute inset-0 opacity-10 bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-        <div class="flex gap-4 mb-8">
+  <!-- blob -->
+  <div class="absolute w-80 h-80 bg-indigo-500/20 blur-3xl animate-morph top-20 left-10"></div>
 
-          <button class="px-6 py-3 rounded-lg 
-                      bg-gradient-to-r from-blue-500 to-purple-600 
-                      shadow-lg shadow-purple-500/40 
-                      hover:scale-105 transition">
-            Start Free Trial →
-          </button>
+  <!-- ring -->
+  <div class="absolute w-72 h-72 border border-white/20 rounded-full animate-rotate-slow"></div>
 
-          <button class="px-6 py-3 rounded-lg 
-                      bg-white/10 border border-white/20 
-                      backdrop-blur hover:bg-white/20 transition flex items-center gap-2">
-            ▶ Watch Demo
-          </button>
+  <div class="relative text-center max-w-xl">
 
-        </div>
-        <div class="flex items-center gap-4">
+    <h1 class="text-5xl font-bold mb-4 animate-slide-up">
+      Build products 
+      <span class="bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+        users love
+      </span>
+    </h1>
 
-          <div class="flex -space-x-3">
-            <img src="https://i.pravatar.cc/40?img=1" class="w-8 h-8 rounded-full border-2 border-black">
-            <img src="https://i.pravatar.cc/40?img=2" class="w-8 h-8 rounded-full border-2 border-black">
-            <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full border-2 border-black">
-          </div>
+    <p class="text-gray-400 mb-6 animate-slide-up">
+      Collaborate, automate, and ship faster with FlowApp.
+    </p>
 
-          <div class="text-sm text-gray-400">
-            ⭐ 4.9/5 <br>
-            Trusted by 2,000+ teams worldwide
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="relative group">
-
-        <img src="group-people-working-out-business-plan-office.jpg"
-          class="rounded-xl shadow-2xl transform group-hover:scale-105 transition duration-500">
-
-        <div class="absolute inset-0 flex items-center justify-center">
-
-        </div>
-        <div
-          class="absolute top-5 right-5 bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-lg text-sm animate-bounce">
-          +127%
-        </div>
-
-        <div
-          class="absolute bottom-5 left-5 bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-lg text-sm animate-bounce">
-          Task completed
-        </div>
-
-      </div>
-
+    <div class="flex justify-center gap-4 animate-scale-in">
+      <button class="px-5 py-2 bg-indigo-500 rounded hover:scale-105 transition">
+        Start Free Trial
+      </button>
+      <button class="px-5 py-2 border rounded hover:bg-white/10">
+        Watch Demo
+      </button>
     </div>
 
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2">
-      <div class="w-6 h-10 border border-white/30 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-white rounded-full animate-bounce mt-2"></div>
-      </div>
-    </div>
+  </div>
 
-  </section>
-  <section class="bg-[#0b0f1a] text-white py-20 px-6">
-    <div class="max-w-7xl mx-auto">
+  <!-- floating card -->
+  <div class="absolute bottom-20 right-10 bg-white text-black p-3 rounded animate-float">
+    +120% growth
+  </div>
 
-      <div class="text-center mb-14">
-        <p class="text-blue-400 text-sm tracking-widest">FEATURES</p>
-        <h2 class="text-4xl font-bold mt-2">Everything you need</h2>
-        <p class="text-gray-400 mt-3">Powerful features designed to supercharge your workflow</p>
-      </div>
+</section>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- FEATURES -->
+<section class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
 
-        <div
-          class="md:col-span-2 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 border border-white/10 hover:border-purple-400 transition duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]">
+    <h2 class="text-3xl font-bold text-center mb-10">Features</h2>
 
-          <div class="flex-1">
-            <div class="w-12 h-12 bg-purple-500/20 flex items-center justify-center rounded-lg mb-4">
-              🚀
-            </div>
-            <h3 class="text-xl font-semibold mb-2">AI-Powered Automation</h3>
-            <p class="text-gray-300 mb-4">
-              Let AI handle repetitive tasks while you focus on what matters. Smart suggestions, auto-completions, and
-              intelligent workflows.
-            </p>
+    <div class="grid md:grid-cols-3 gap-6">
 
-            <div class="flex gap-2 flex-wrap text-sm">
-              <span class="bg-white/10 px-3 py-1 rounded-full">Smart Suggestions</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Auto-complete</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Workflows</span>
-            </div>
-          </div>
-
-          <img src="group-people-working-out-business-plan-office.jpg"
-            class="rounded-xl w-full md:w-1/2 object-cover hover:scale-105 transition duration-500" />
-        </div>
-
-        <div
-          class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-6 rounded-2xl border border-white/10 hover:border-blue-400 transition duration-500 hover:rotate-1 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]">
-          <div class="mb-3 text-blue-400">⚡</div>
-          <h4 class="font-semibold">Lightning Fast</h4>
-          <p class="text-gray-400 text-sm mt-1">Sub-millisecond response times with global edge deployment.</p>
-        </div>
-
-        <div
-          class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-6 rounded-2xl border border-white/10 hover:border-green-400 transition duration-500 hover:-rotate-1 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.4)]">
-          <div class="mb-3 text-green-400">🔒</div>
-          <h4 class="font-semibold">Bank-Level Security</h4>
-          <p class="text-gray-400 text-sm mt-1">256-bit encryption, SOC2 compliant, GDPR ready.</p>
-        </div>
-
-        <div
-          class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-2xl border border-white/10 hover:border-purple-400 transition duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]">
-          <div class="mb-3 text-purple-400">📊</div>
-          <h4 class="font-semibold">Advanced Analytics</h4>
-          <p class="text-gray-400 text-sm mt-1">Real-time dashboards with custom reports and insights.</p>
-        </div>
-
-        <div
-          class="bg-gradient-to-br from-orange-500/20 to-yellow-500/20 p-6 rounded-2xl border border-white/10 hover:border-yellow-400 transition duration-500 hover:rotate-1 hover:scale-105 hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]">
-          <div class="mb-3 text-yellow-400">🔄</div>
-          <h4 class="font-semibold">Real-time Sync</h4>
-          <p class="text-gray-400 text-sm mt-1">Instant sync across unlimited devices and platforms.</p>
-        </div>
-
-        <div
-          class="bg-gradient-to-br from-pink-500/20 to-rose-500/20 p-6 rounded-2xl border border-white/10 hover:border-pink-400 transition duration-500 hover:-rotate-1 hover:scale-105 hover:shadow-[0_0_30px_rgba(244,63,94,0.4)]">
-          <div class="mb-3 text-pink-400">🤝</div>
-          <h4 class="font-semibold">Team Collaboration</h4>
-          <p class="text-gray-400 text-sm mt-1">Real-time editing, comments, and version history.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-[#0b0f1a] text-white py-20 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-
-      <p class="text-purple-400 text-sm tracking-widest">TESTIMONIALS</p>
-      <h2 class="text-4xl font-bold mt-2">Loved by thousands</h2>
-
-      <div class="grid md:grid-cols-3 gap-6 mt-14 items-center">
-
-        <div
-          class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl p-6 text-left transition duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-          <div class="text-yellow-400 mb-3">★★★★★</div>
-          <p class="text-gray-300 text-sm mb-6">
-            “FlowApp completely transformed our workflow. We shipped 3x faster in the first month alone.”
-          </p>
-
-          <div class="flex items-center gap-3">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full object-cover" />
-            <div>
-              <p class="font-semibold text-sm">Sarah Johnson</p>
-              <p class="text-gray-400 text-xs">CEO, TechStartup</p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl p-6 text-left transform md:-translate-y-6 transition duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-          <div class="text-yellow-400 mb-3">★★★★★</div>
-          <p class="text-gray-300 text-sm mb-6">
-            “The AI features are mind-blowing. It’s like having an extra team member that never sleeps.”
-          </p>
-
-          <div class="flex items-center gap-3">
-            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="w-10 h-10 rounded-full object-cover" />
-            <div>
-              <p class="font-semibold text-sm">Mike Chen</p>
-              <p class="text-gray-400 text-xs">CTO, DevCorp</p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl p-6 text-left transition duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-          <div class="text-yellow-400 mb-3">★★★★★</div>
-          <p class="text-gray-300 text-sm mb-6">
-            “Best investment we’ve made. The ROI was visible within the first week of using FlowApp.”
-          </p>
-
-          <div class="flex items-center gap-3">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full object-cover" />
-            <div>
-              <p class="font-semibold text-sm">Emily Davis</p>
-              <p class="text-gray-400 text-xs">Founder, DesignHub</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <section class="relative py-24 text-center text-white overflow-hidden">
-
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-[length:200%_200%] animate-gradient">
-    </div>
-
-    <div class="absolute top-10 left-10 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-10 right-10 w-52 h-52 bg-pink-500/30 rounded-full blur-3xl animate-float"></div>
-
-    <div class="relative z-10 max-w-3xl mx-auto px-6">
-
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up">
-        Ready to transform your workflow?
-      </h2>
-
-      <p class="text-white/80 mb-8 animate-slide-up delay-100">
-        Join 2,000+ teams already using FlowApp to build better products, faster.
-      </p>
-
-      <div class="flex justify-center gap-4 flex-wrap animate-scale-in delay-200">
-
-        <button class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:scale-105 transition shadow-lg">
-          Start Free Trial →
-        </button>
-
-        <button class="border border-white/40 px-6 py-3 rounded-lg hover:bg-white/10 transition backdrop-blur">
-          Schedule Demo
-        </button>
-
+      <div class="md:col-span-2 p-6 bg-indigo-500/20 rounded hover:scale-105 transition">
+        AI-Powered Automation
       </div>
 
-      <p class="text-sm text-white/70 mt-4 animate-slide-up delay-300">
-        No credit card required • 14-day free trial • Cancel anytime
-      </p>
+      <div class="p-4 bg-gray-800 rounded hover:rotate-1">Lightning Fast</div>
+      <div class="p-4 bg-gray-800 rounded">Security</div>
+      <div class="p-4 bg-gray-800 rounded">Analytics</div>
+      <div class="p-4 bg-gray-800 rounded">Sync</div>
+      <div class="p-4 bg-gray-800 rounded">Collaboration</div>
 
     </div>
-  </section>
-  <footer class="bg-[#05070d] text-white py-16 px-6 border-t border-white/10">
+  </div>
+</section>
 
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+<!-- TESTIMONIALS -->
+<section class="py-20 px-6 bg-gray-800 text-center">
+  <h2 class="text-3xl font-bold mb-10">Testimonials</h2>
 
-      <div>
-        <h3 class="text-lg font-semibold mb-3">⚡ FlowApp</h3>
-        <p class="text-gray-400 text-sm mb-4">
-          Build better products faster with the all-in-one platform for modern teams.
-        </p>
+  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
-        <div class="flex gap-3">
-          <span
-            class="w-9 h-9 flex items-center justify-center bg-white/10 rounded-md hover:bg-purple-500 transition cursor-pointer hover:scale-110">X</span>
-          <span
-            class="w-9 h-9 flex items-center justify-center bg-white/10 rounded-md hover:bg-blue-500 transition cursor-pointer hover:scale-110">in</span>
-          <span
-            class="w-9 h-9 flex items-center justify-center bg-white/10 rounded-md hover:bg-red-500 transition cursor-pointer hover:scale-110">▶</span>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-3">Product</h4>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li class="hover:text-white transition">Features</li>
-          <li class="hover:text-white transition">Pricing</li>
-          <li class="hover:text-white transition">Integrations</li>
-          <li class="hover:text-white transition">Changelog</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-3">Company</h4>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li class="hover:text-white transition">About</li>
-          <li class="hover:text-white transition">Blog</li>
-          <li class="hover:text-white transition">Careers</li>
-          <li class="hover:text-white transition">Press</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-3">Legal</h4>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li class="hover:text-white transition">Privacy</li>
-          <li class="hover:text-white transition">Terms</li>
-          <li class="hover:text-white transition">Security</li>
-        </ul>
-      </div>
-
+    <div class="bg-white/10 p-4 rounded hover:scale-105">
+      ⭐⭐⭐⭐⭐
+      <p>"Great product"</p>
+      <p class="text-sm text-gray-400">User 1</p>
     </div>
 
-    <div
-      class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-      <p>⚡ FlowApp</p>
-      <p>© 2026 FlowApp. All rights reserved.</p>
+    <div class="bg-white/10 p-4 rounded md:-mt-6 hover:scale-105">
+      ⭐⭐⭐⭐⭐
+      <p>"Very useful"</p>
+      <p class="text-sm text-gray-400">User 2</p>
     </div>
 
-  </footer>
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
+    <div class="bg-white/10 p-4 rounded hover:scale-105">
+      ⭐⭐⭐⭐⭐
+      <p>"Loved it"</p>
+      <p class="text-sm text-gray-400">User 3</p>
+    </div>
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 text-center relative overflow-hidden">
+
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-70"></div>
+
+  <div class="relative">
+    <h2 class="text-3xl font-bold mb-4">
+      Ready to transform your workflow?
+    </h2>
+
+    <p class="mb-6">Start building faster today</p>
+
+    <div class="flex justify-center gap-4">
+      <button class="bg-white text-black px-5 py-2 rounded">
+        Start Free Trial
+      </button>
+      <button class="border px-5 py-2 rounded">
+        Schedule Demo
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 py-10 px-6 text-center">
+
+  <h3 class="mb-3">FlowApp</h3>
+
+  <div class="flex justify-center gap-6 mb-4 text-sm text-gray-400">
+    <span>Product</span>
+    <span>Company</span>
+    <span>Legal</span>
+  </div>
+
+  <p class="text-gray-500 text-sm">
+    © 2026 FlowApp. All rights reserved.
+  </p>
+
+</footer>
+
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
 
 </body>
-
 </html>
