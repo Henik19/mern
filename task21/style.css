@@ -4,7 +4,12 @@
     padding:0;
     box-sizing:border-box;
   }
-  
+  html{
+    scroll-behavior: smooth;
+  }
+  section {
+    scroll-margin-top: 80px;
+  }
   body{
     font-family:'Lato', sans-serif;
     overflow-x:hidden;
