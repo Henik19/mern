@@ -1,237 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowApp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowApp – Build products users love</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          },
           keyframes: {
-            "slide-up": {
-              "0%": { opacity: 0, transform: "translateY(30px)" },
-              "100%": { opacity: 1, transform: "translateY(0)" }
+            'slide-up': {
+              '0%':   { opacity:'0', transform:'translateY(40px)' },
+              '100%': { opacity:'1', transform:'translateY(0)' }
             },
-            "slide-left": {
-              "0%": { opacity: 0, transform: "translateX(-30px)" },
-              "100%": { opacity: 1, transform: "translateX(0)" }
+            'slide-in-left': {
+              '0%':   { opacity:'0', transform:'translateX(-60px)' },
+              '100%': { opacity:'1', transform:'translateX(0)' }
             },
-            "slide-right": {
-              "0%": { opacity: 0, transform: "translateX(30px)" },
-              "100%": { opacity: 1, transform: "translateX(0)" }
+            'slide-in-right': {
+              '0%':   { opacity:'0', transform:'translateX(60px)' },
+              '100%': { opacity:'1', transform:'translateX(0)' }
             },
-            "scale-in": {
-              "0%": { opacity: 0, transform: "scale(0.9)" },
-              "100%": { opacity: 1, transform: "scale(1)" }
+            'scale-in': {
+              '0%':   { opacity:'0', transform:'scale(0.85)' },
+              '100%': { opacity:'1', transform:'scale(1)' }
             },
-            "float": {
-              "0%,100%": { transform: "translateY(0)" },
-              "50%": { transform: "translateY(-12px)" }
+            'rotate-slow': {
+              '0%':   { transform:'rotate(0deg)' },
+              '100%': { transform:'rotate(360deg)' }
             },
-            "rotate-slow": {
-              "0%": { transform: "rotate(0deg)" },
-              "100%": { transform: "rotate(360deg)" }
+            'morph': {
+              '0%,100%': { borderRadius:'60% 40% 30% 70% / 60% 30% 70% 40%' },
+              '50%':     { borderRadius:'30% 60% 70% 40% / 50% 60% 30% 60%' }
             },
-            "morph": {
-              "0%,100%": { borderRadius: "30% 70% 70% 30%" },
-              "50%": { borderRadius: "60% 40% 30% 70%" }
+            'float': {
+              '0%,100%': { transform:'translateY(0px)' },
+              '50%':     { transform:'translateY(-18px)' }
             },
-            "glow": {
-              "0%,100%": { boxShadow: "0 0 10px rgba(99,102,241,0.5)" },
-              "50%": { boxShadow: "0 0 25px rgba(99,102,241,0.9)" }
+            'glow': {
+              '0%,100%': { boxShadow:'0 0 20px rgba(99,102,241,0.35)' },
+              '50%':     { boxShadow:'0 0 45px rgba(99,102,241,0.75), 0 0 80px rgba(139,92,246,0.25)' }
+            },
+            'scroll-bounce': {
+              '0%,100%': { transform:'translateY(0)' },
+              '50%':     { transform:'translateY(9px)' }
+            },
+            'gradient-x': {
+              '0%,100%': { backgroundPosition:'0% 50%' },
+              '50%':     { backgroundPosition:'100% 50%' }
             }
           },
           animation: {
-            "slide-up": "slide-up 0.7s ease forwards",
-            "slide-left": "slide-left 0.7s ease forwards",
-            "slide-right": "slide-right 0.7s ease forwards",
-            "scale-in": "scale-in 0.5s ease forwards",
-            "float": "float 5s ease-in-out infinite",
-            "rotate-slow": "rotate-slow 18s linear infinite",
-            "morph": "morph 6s ease-in-out infinite",
-            "glow": "glow 2s ease-in-out infinite"
+            'slide-up':       'slide-up 0.75s cubic-bezier(.22,.68,0,1.2) forwards',
+            'slide-up-d1':    'slide-up 0.75s cubic-bezier(.22,.68,0,1.2) 0.15s forwards',
+            'slide-up-d2':    'slide-up 0.75s cubic-bezier(.22,.68,0,1.2) 0.3s forwards',
+            'slide-up-d3':    'slide-up 0.75s cubic-bezier(.22,.68,0,1.2) 0.45s forwards',
+            'slide-in-left':  'slide-in-left 0.75s cubic-bezier(.22,.68,0,1.2) 0.1s forwards',
+            'slide-in-right': 'slide-in-right 0.75s cubic-bezier(.22,.68,0,1.2) 0.2s forwards',
+            'scale-in':       'scale-in 0.6s ease forwards',
+            'rotate-slow':    'rotate-slow 14s linear infinite',
+            'rotate-rev':     'rotate-slow 20s linear infinite reverse',
+            'morph':          'morph 9s ease-in-out infinite',
+            'float':          'float 6s ease-in-out infinite',
+            'float-d1':       'float 6s ease-in-out 2s infinite',
+            'float-d2':       'float 6s ease-in-out 4s infinite',
+            'glow':           'glow 3s ease-in-out infinite',
+            'scroll-bounce':  'scroll-bounce 1.8s ease-in-out infinite',
+            'gradient-x':     'gradient-x 5s ease infinite',
           }
         }
       }
     }
   </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; }
+
+    /* Animated gradient text */
+    .grad-text {
+      background: linear-gradient(90deg, #818cf8, #a78bfa, #38bdf8, #818cf8);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-x 4s ease infinite;
+    }
+
+    /* CTA animated gradient */
+    .cta-grad {
+      background: linear-gradient(135deg, #312e81, #5b21b6, #9d174d, #db2777, #5b21b6, #312e81);
+      background-size: 400% 400%;
+      animation: gradient-x 6s ease infinite;
+    }
+
+    /* Glass utility */
+    .glass {
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Dot grid hero bg */
+    .dot-grid {
+      background-image: radial-gradient(rgba(99,102,241,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Line grid CTA overlay */
+    .line-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Hidden until animated */
+    .will-anim { opacity: 0; }
+
+    /* Navbar frosted glass */
+    .nav-glass {
+      background: rgba(8,8,18,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* 3-D perspective on dashboard */
+    .persp { perspective: 1100px; }
+    .card-3d {
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+      transform-style: preserve-3d;
+    }
+    .card-3d:hover {
+      transform: rotateY(-7deg) rotateX(4deg) scale(1.025);
+      box-shadow: 28px 28px 60px rgba(0,0,0,0.45);
+    }
+
+    /* Bento card hover */
+    .bento {
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .bento:hover {
+      transform: translateY(-5px) scale(1.018);
+      box-shadow: 0 0 32px rgba(99,102,241,0.28);
+      border-color: rgba(99,102,241,0.45);
+    }
+
+    /* Middle testimonial card offset */
+    @media (min-width: 768px) { .testi-mid { margin-top: -28px; } }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-[#080812] text-white overflow-x-hidden">
 
-<!-- NAVBAR -->
-<nav class="fixed top-0 w-full bg-white/10 backdrop-blur border-b border-white/20 z-50">
-  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+<!-- ═══════════════════════════════════════
+  NAVIGATION — glassmorphism fixed navbar
+  position:fixed + z-50 keeps it pinned at
+  top above all content while scrolling.
+  backdrop-filter creates frosted-glass look.
+═══════════════════════════════════════ -->
+<nav class="fixed top-0 inset-x-0 z-50 nav-glass">
+  <div class="max-w-6xl mx-auto px-6 h-[62px] flex items-center justify-between">
 
-    <div class="flex items-center gap-2">
-      <div class="w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded"></div>
-      <h1 class="font-semibold">FlowApp</h1>
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5">
+      <div class="w-[30px] h-[30px] rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600
+                  flex items-center justify-center shadow-[0_0_14px_rgba(99,102,241,0.5)]">
+        <svg class="w-[16px] h-[16px] text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <span class="font-display text-[17px] font-bold tracking-tight">FlowApp</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-9">
+      <a href="#features" class="text-[13.5px] text-gray-400 hover:text-white transition-colors">Features</a>
+      <a href="#pricing"  class="text-[13.5px] text-gray-400 hover:text-white transition-colors">Pricing</a>
+      <a href="#reviews"  class="text-[13.5px] text-gray-400 hover:text-white transition-colors">Reviews</a>
     </div>
 
-    <ul class="hidden md:flex gap-6 text-sm">
-      <li>Features</li>
-      <li>Pricing</li>
-      <li>Reviews</li>
-    </ul>
-
-    <button class="hidden md:block px-4 py-2 bg-indigo-500 rounded animate-glow">
-      Get Started
-    </button>
-
-    <button id="menuBtn" class="md:hidden">☰</button>
+    <div class="flex items-center gap-3">
+      <!-- Get Started button with glow animation -->
+      <button class="hidden md:inline-flex px-[18px] py-[8px] rounded-lg
+                     bg-gradient-to-r from-indigo-600 to-violet-600
+                     text-[13px] font-semibold animate-glow
+                     hover:from-indigo-500 hover:to-violet-500 hover:scale-[1.05]
+                     transition-all duration-250 shadow-md">
+        Get Started
+      </button>
+      <!-- Hamburger icon (mobile) -->
+      <button id="ham" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Open menu">
+        <span class="block w-5 h-[2px] bg-white rounded"></span>
+        <span class="block w-5 h-[2px] bg-white rounded"></span>
+        <span class="block w-5 h-[2px] bg-white rounded"></span>
+      </button>
+    </div>
   </div>
 
-  <div id="mobileMenu" class="hidden text-center pb-4">
-    <p>Features</p>
-    <p>Pricing</p>
-    <p>Reviews</p>
+  <!-- Mobile dropdown menu -->
+  <div id="mob-menu" class="hidden md:hidden border-t border-white/10 px-6 py-5 flex flex-col gap-4">
+    <a href="#features" class="text-sm text-gray-300 hover:text-white">Features</a>
+    <a href="#pricing"  class="text-sm text-gray-300 hover:text-white">Pricing</a>
+    <a href="#reviews"  class="text-sm text-gray-300 hover:text-white">Reviews</a>
+    <button class="mt-1 w-full py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 text-sm font-semibold">
+      Get Started
+    </button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
 
-  <!-- grid bg -->
-  <div class="absolute inset-0 opacity-10 bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+<!-- ═══════════════════════════════════════
+  HERO SECTION
+  Positioning strategy:
+  • section → position:relative (containing
+    block for all decorative abs children)
+  • orbs/rings/blob → position:absolute,
+    pointer-events:none (decorative only,
+    no impact on document flow)
+  • hero content → z-10, sits above decor
+  • .card-3d → position:relative (parent for
+    the 3 absolutely-positioned floating cards)
+  • Floating cards → position:absolute + z-20,
+    anchored with top/right/bottom/left offsets
+═══════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center justify-center
+                pt-[90px] pb-24 px-6 overflow-hidden dot-grid">
 
-  <!-- blob -->
-  <div class="absolute w-80 h-80 bg-indigo-500/20 blur-3xl animate-morph top-20 left-10"></div>
+  <!-- DECORATIVE LAYER — all position:absolute, never affect flow -->
 
-  <!-- ring -->
-  <div class="absolute w-72 h-72 border border-white/20 rounded-full animate-rotate-slow"></div>
+  <!-- Orb: top-left indigo -->
+  <div class="absolute -top-28 -left-28 w-[500px] h-[500px] rounded-full
+              bg-gradient-to-br from-indigo-700/25 to-violet-700/15
+              blur-[100px] animate-float pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative text-center max-w-xl">
+  <!-- Orb: bottom-right violet/pink -->
+  <div class="absolute -bottom-28 -right-28 w-[460px] h-[460px] rounded-full
+              bg-gradient-to-br from-violet-700/20 to-pink-700/15
+              blur-[90px] animate-float-d1 pointer-events-none" aria-hidden="true"></div>
 
-    <h1 class="text-5xl font-bold mb-4 animate-slide-up">
-      Build products 
-      <span class="bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
-        users love
-      </span>
-    </h1>
+  <!-- Orb: centre-right cyan -->
+  <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[280px] h-[280px] rounded-full
+              bg-gradient-to-br from-cyan-600/15 to-sky-600/10
+              blur-[70px] animate-float-d2 pointer-events-none" aria-hidden="true"></div>
 
-    <p class="text-gray-400 mb-6 animate-slide-up">
-      Collaborate, automate, and ship faster with FlowApp.
-    </p>
+  <!-- Morphing blob -->
+  <div class="absolute top-1/3 left-1/3 w-[320px] h-[320px]
+              bg-gradient-to-br from-indigo-600/10 to-violet-600/08
+              animate-morph blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <div class="flex justify-center gap-4 animate-scale-in">
-      <button class="px-5 py-2 bg-indigo-500 rounded hover:scale-105 transition">
-        Start Free Trial
-      </button>
-      <button class="px-5 py-2 border rounded hover:bg-white/10">
-        Watch Demo
-      </button>
+  <!-- Rotating ring 1 -->
+  <div class="absolute top-28 right-[22%] w-44 h-44 rounded-full
+              border border-indigo-500/18 animate-rotate-slow pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Rotating ring 2 (reverse) -->
+  <div class="absolute bottom-[22%] left-[30%] w-60 h-60 rounded-full
+              border border-violet-500/12 animate-rotate-rev pointer-events-none" aria-hidden="true"></div>
+
+  <!-- HERO CONTENT — z-10, normal flow above all absolute decorations -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto">
+
+    <!-- NEW badge — slide-up on load -->
+    <div class="flex justify-center md:justify-start mb-7 will-anim animate-slide-up">
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-[6px] text-[12px] text-gray-300
+                  bg-white/[0.06] border border-white/[0.12]">
+        <span class="w-[7px] h-[7px] rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+        Now with AI-powered features
+        <span class="ml-1 bg-indigo-600 text-white text-[10px] font-bold px-[7px] py-[2px] rounded-full">NEW</span>
+      </div>
     </div>
 
+    <!-- Two-column layout -->
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+
+      <!-- LEFT COLUMN: text content -->
+      <div>
+        <!-- Staggered headline: each line has a different animation delay -->
+        <h1 class="font-display text-[52px] md:text-[62px] font-extrabold leading-[1.07] mb-6">
+          <span class="block will-anim animate-slide-up">Build products</span>
+          <span class="block grad-text will-anim animate-slide-up-d1">users love</span>
+        </h1>
+
+        <p class="text-gray-400 text-[17px] leading-relaxed mb-9 max-w-[430px]
+                  will-anim animate-slide-up-d2">
+          The all-in-one platform for teams to collaborate,
+          design, and ship amazing products 10x faster.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 mb-10 will-anim animate-slide-up-d3">
+
+          <!-- Primary: gradient fill + shimmer overlay on hover + glow shadow -->
+          <button class="group relative overflow-hidden px-7 py-[13px] rounded-xl
+                         bg-gradient-to-r from-indigo-600 to-violet-600
+                         font-semibold text-[14px]
+                         hover:scale-[1.05] hover:shadow-[0_0_32px_rgba(99,102,241,0.55)]
+                         transition-all duration-300">
+            <span class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500
+                         opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span class="relative flex items-center gap-2">Start Free Trial →</span>
+          </button>
+
+          <!-- Secondary: glass style -->
+          <button class="group flex items-center gap-2.5 px-6 py-[13px] rounded-xl
+                         glass font-semibold text-[14px]
+                         hover:bg-white/10 hover:scale-[1.05]
+                         hover:shadow-[0_0_22px_rgba(255,255,255,0.08)]
+                         transition-all duration-300">
+            <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+            Watch Demo
+          </button>
+        </div>
+
+        <!-- Social proof -->
+        <div class="flex items-center gap-4 will-anim animate-slide-up-d3">
+          <!-- Stacked avatar circles -->
+          <div class="flex -space-x-2.5">
+            <div class="w-9 h-9 rounded-full border-2 border-[#080812] bg-gradient-to-br from-rose-400 to-red-500"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#080812] bg-gradient-to-br from-sky-400 to-blue-500"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#080812] bg-gradient-to-br from-emerald-400 to-teal-500"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#080812] bg-gradient-to-br from-amber-400 to-orange-500
+                        flex items-center justify-center text-[9px] font-bold text-white">+2K</div>
+          </div>
+          <div>
+            <div class="flex gap-[2px] text-amber-400 text-[13px]">★★★★★</div>
+            <p class="text-[12px] text-gray-400 mt-0.5">
+              <span class="text-white font-semibold">4.9/5</span>&nbsp;Trusted by 2,000+ teams worldwide
+            </p>
+          </div>
+        </div>
+      </div><!-- /left col -->
+
+      <!-- RIGHT COLUMN: 3-D dashboard preview
+           .persp sets CSS perspective — makes child 3-D rotations look real.
+           .card-3d is position:relative → becomes containing block for
+           the three floating absolutely-positioned stat cards.
+           Each floating card uses position:absolute with offsets and z-20
+           so it overlaps the dashboard surface. -->
+      <div class="persp will-anim animate-slide-in-right">
+
+        <!-- position:relative parent for floating cards -->
+        <div class="relative card-3d">
+
+          <!-- Dashboard mock window -->
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10
+                      bg-gradient-to-br from-[#181830] to-[#14142a]">
+
+            <!-- Browser chrome bar -->
+            <div class="flex items-center gap-1.5 px-4 py-[10px] bg-black/35 border-b border-white/[0.07]">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+              <div class="flex-1 mx-4 h-5 rounded bg-white/[0.05] flex items-center px-2">
+                <span class="text-[10px] text-gray-600">app.flowapp.io/dashboard</span>
+              </div>
+            </div>
+
+            <!-- Dashboard body -->
+            <div class="p-5 space-y-4">
+              <!-- Bar chart -->
+              <div class="flex items-end gap-2 h-28 px-1">
+                <div class="flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-indigo-400" style="height:58%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-indigo-400" style="height:78%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-violet-700 to-violet-400" style="height:44%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-indigo-400" style="height:92%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-pink-700 to-pink-400"   style="height:68%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-indigo-400" style="height:54%"></div>
+                <div class="flex-1 rounded-t bg-gradient-to-t from-cyan-700 to-cyan-400"   style="height:100%"></div>
+              </div>
+              <!-- Metric cards -->
+              <div class="grid grid-cols-3 gap-2.5">
+                <div class="bg-white/[0.04] rounded-xl p-3">
+                  <p class="text-[11px] text-gray-500 mb-1">Revenue</p>
+                  <p class="text-[16px] font-bold">$48.2k</p>
+                  <p class="text-[11px] text-emerald-400 mt-0.5">↑ 12%</p>
+                </div>
+                <div class="bg-white/[0.04] rounded-xl p-3">
+                  <p class="text-[11px] text-gray-500 mb-1">Users</p>
+                  <p class="text-[16px] font-bold">2,481</p>
+                  <p class="text-[11px] text-emerald-400 mt-0.5">↑ 8%</p>
+                </div>
+                <div class="bg-white/[0.04] rounded-xl p-3">
+                  <p class="text-[11px] text-gray-500 mb-1">Tasks</p>
+                  <p class="text-[16px] font-bold">143</p>
+                  <p class="text-[11px] text-indigo-400 mt-0.5">Active</p>
+                </div>
+              </div>
+            </div>
+          </div><!-- /dashboard window -->
+
+          <!-- FLOATING CARD 1: Growth — top-right
+               position:absolute anchors to .card-3d (relative parent)
+               z-20 ensures it layers above the dashboard surface -->
+          <div class="absolute -top-5 -right-7 z-20 glass rounded-xl px-4 py-3 shadow-xl
+                      flex items-center gap-2.5 animate-float">
+            <div class="w-9 h-9 rounded-full bg-emerald-400/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[11px] text-gray-400">Growth</p>
+              <p class="text-[14px] font-bold text-emerald-400">+127%</p>
+            </div>
+          </div>
+
+          <!-- FLOATING CARD 2: Online users — right edge, mid height -->
+          <div class="absolute top-[48%] -right-10 z-20 glass rounded-xl px-4 py-2.5 shadow-xl
+                      flex items-center gap-2 animate-float-d1">
+            <div class="flex -space-x-1.5">
+              <div class="w-[22px] h-[22px] rounded-full bg-gradient-to-br from-rose-400 to-red-500 border border-[#080812]"></div>
+              <div class="w-[22px] h-[22px] rounded-full bg-gradient-to-br from-sky-400 to-blue-500 border border-[#080812]"></div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-[6px] h-[6px] rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+              <span class="text-[12px] text-gray-300">Online</span>
+            </div>
+          </div>
+
+          <!-- FLOATING CARD 3: Task completed — bottom-left -->
+          <div class="absolute -bottom-5 left-5 z-20 glass rounded-xl px-4 py-3 shadow-xl
+                      flex items-center gap-3 animate-float-d2">
+            <div class="w-8 h-8 rounded-full bg-indigo-500/25 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[13px] font-semibold text-white">Task completed</p>
+              <p class="text-[10px] text-gray-500">2 min ago</p>
+            </div>
+          </div>
+
+        </div><!-- /card-3d -->
+      </div><!-- /persp -->
+    </div><!-- /2-col grid -->
+  </div><!-- /z-10 content -->
+
+  <!-- Scroll indicator — absolute, bottom-centre -->
+  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+    <span class="text-[10px] text-gray-600 tracking-[3px] uppercase">Scroll</span>
+    <div class="w-[22px] h-9 rounded-full border border-gray-700 flex items-start justify-center pt-1.5 animate-scroll-bounce">
+      <div class="w-[5px] h-[10px] rounded-full bg-indigo-500"></div>
+    </div>
   </div>
 
-  <!-- floating card -->
-  <div class="absolute bottom-20 right-10 bg-white text-black p-3 rounded animate-float">
-    +120% growth
-  </div>
+</section><!-- /hero -->
 
-</section>
 
-<!-- FEATURES -->
-<section class="py-20 px-6">
-  <div class="max-w-6xl mx-auto">
+<!-- ═══════════════════════════════════════
+  FEATURES SECTION — Bento Grid (Image 2)
+  Top row: large AI card | mini dashboard | 2 stacked
+  Bottom row: 3 equal smaller feature cards
+═══════════════════════════════════════ -->
+<section id="features" class="relative py-28 px-6 overflow-hidden">
 
-    <h2 class="text-3xl font-bold text-center mb-10">Features</h2>
+  <!-- Ambient top glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[360px]
+              bg-gradient-to-b from-indigo-900/18 to-transparent blur-3xl pointer-events-none"
+       aria-hidden="true"></div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+  <div class="relative z-10 max-w-6xl mx-auto">
 
-      <div class="md:col-span-2 p-6 bg-indigo-500/20 rounded hover:scale-105 transition">
-        AI-Powered Automation
+    <!-- Section heading -->
+    <div class="text-center mb-16">
+      <p class="text-indigo-400 text-[13px] font-semibold uppercase tracking-[4px] mb-3">FEATURES</p>
+      <h2 class="font-display text-[42px] md:text-[52px] font-extrabold mb-4 leading-tight">
+        Everything you need
+      </h2>
+      <p class="text-gray-400 text-[16px] max-w-md mx-auto">
+        Powerful features designed to supercharge your workflow
+      </p>
+    </div>
+
+    <!-- TOP ROW -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+
+      <!-- AI-Powered Automation (large left card) -->
+      <div class="bento glass rounded-2xl p-8 bg-gradient-to-br from-indigo-950/50 to-violet-950/30">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600
+                    flex items-center justify-center mb-5 shadow-[0_0_18px_rgba(99,102,241,0.4)]">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3
+                     m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547
+                     A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531
+                     c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[20px] font-bold mb-3">AI-Powered Automation</h3>
+        <p class="text-gray-400 text-[13.5px] leading-relaxed mb-6">
+          Let AI handle repetitive tasks while you focus on what matters.
+          Smart suggestions, auto-completions, and intelligent workflows.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[11.5px] px-3 py-1 rounded-full bg-indigo-500/18 border border-indigo-500/30 text-indigo-300">Smart Suggestions</span>
+          <span class="text-[11.5px] px-3 py-1 rounded-full bg-violet-500/18 border border-violet-500/30 text-violet-300">Auto-complete</span>
+          <span class="text-[11.5px] px-3 py-1 rounded-full bg-cyan-500/18 border border-cyan-500/30 text-cyan-300">Workflows</span>
+        </div>
       </div>
 
-      <div class="p-4 bg-gray-800 rounded hover:rotate-1">Lightning Fast</div>
-      <div class="p-4 bg-gray-800 rounded">Security</div>
-      <div class="p-4 bg-gray-800 rounded">Analytics</div>
-      <div class="p-4 bg-gray-800 rounded">Sync</div>
-      <div class="p-4 bg-gray-800 rounded">Collaboration</div>
+      <!-- Centre: mini dashboard visual -->
+      <div class="bento rounded-2xl overflow-hidden relative
+                  bg-gradient-to-br from-[#181830] to-[#10101e] min-h-[270px]">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-700/10 to-transparent pointer-events-none"></div>
+        <div class="p-6 h-full flex flex-col justify-between">
+          <div class="flex items-end gap-1.5 h-28">
+            <div class="flex-1 rounded-t bg-indigo-600/65" style="height:52%"></div>
+            <div class="flex-1 rounded-t bg-indigo-600/65" style="height:72%"></div>
+            <div class="flex-1 rounded-t bg-violet-600/65" style="height:42%"></div>
+            <div class="flex-1 rounded-t bg-indigo-600/65" style="height:88%"></div>
+            <div class="flex-1 rounded-t bg-pink-600/65"   style="height:62%"></div>
+            <div class="flex-1 rounded-t bg-indigo-600/65" style="height:100%"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-5">
+            <div class="bg-white/[0.05] rounded-xl p-3">
+              <p class="text-[11px] text-gray-500">Tasks Done</p>
+              <p class="text-[15px] font-bold mt-0.5">1,284</p>
+            </div>
+            <div class="bg-white/[0.05] rounded-xl p-3">
+              <p class="text-[11px] text-gray-500">Speed</p>
+              <p class="text-[15px] font-bold text-cyan-400 mt-0.5">10×</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Right: 2 stacked smaller cards -->
+      <div class="flex flex-col gap-4">
+        <!-- Lightning Fast -->
+        <div class="bento glass rounded-2xl p-6 flex-1">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600
+                      flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-[15.5px] font-bold mb-1.5">Lightning Fast</h3>
+          <p class="text-gray-400 text-[12.5px] leading-relaxed">
+            Sub-millisecond response times with global edge deployment.
+          </p>
+        </div>
+        <!-- Bank-Level Security -->
+        <div class="bento glass rounded-2xl p-6 flex-1">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600
+                      flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944
+                       a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9
+                       c0 5.591 3.824 10.29 9 11.622
+                       5.176-1.332 9-6.03 9-11.622
+                       0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-[15.5px] font-bold mb-1.5">Bank-Level Security</h3>
+          <p class="text-gray-400 text-[12.5px] leading-relaxed">
+            256-bit encryption, SOC2 compliant, GDPR ready.
+          </p>
+        </div>
+      </div>
+    </div><!-- /top row -->
+
+    <!-- BOTTOM ROW: 3 equal cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Advanced Analytics -->
+      <div class="bento glass rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600
+                    flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2
+                     zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2
+                     m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[15.5px] font-bold mb-1.5">Advanced Analytics</h3>
+        <p class="text-gray-400 text-[12.5px] leading-relaxed">
+          Deep insights into your team's performance and product metrics.
+        </p>
+      </div>
+      <!-- Real-time Sync -->
+      <div class="bento glass rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-red-600
+                    flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9
+                     m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[15.5px] font-bold mb-1.5">Real-time Sync</h3>
+        <p class="text-gray-400 text-[12.5px] leading-relaxed">
+          Changes sync instantly across all devices and team members.
+        </p>
+      </div>
+      <!-- Team Collaboration -->
+      <div class="bento glass rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600
+                    flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857
+                     M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857
+                     m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0
+                     zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[15.5px] font-bold mb-1.5">Team Collaboration</h3>
+        <p class="text-gray-400 text-[12.5px] leading-relaxed">
+          Work together seamlessly with shared workspaces and live cursors.
+        </p>
+      </div>
+    </div><!-- /bottom row -->
+
+  </div>
+</section><!-- /features -->
+
+
+<section id="reviews" class="relative py-28 px-6 overflow-hidden">
+
+  <!-- Bottom ambient glow -->
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]
+              bg-gradient-to-t from-violet-900/18 to-transparent blur-3xl pointer-events-none"
+       aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-indigo-400 text-[13px] font-semibold uppercase tracking-[4px] mb-3">TESTIMONIALS</p>
+      <h2 class="font-display text-[42px] md:text-[52px] font-extrabold leading-tight">
+        Loved by thousands
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+      <!-- Card 1 -->
+      <div class="glass rounded-2xl p-7 hover:scale-[1.03]
+                  hover:shadow-[0_0_32px_rgba(99,102,241,0.22)] transition-all duration-300">
+        <div class="flex gap-[3px] text-amber-400 text-sm mb-4">★★★★★</div>
+        <p class="text-gray-300 text-[14px] leading-relaxed mb-7">
+          "FlowApp completely transformed our workflow. We shipped 3× faster in the first month alone."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-400 to-red-500 flex-shrink-0"></div>
+          <div>
+            <p class="text-[14px] font-semibold">Sarah Johnson</p>
+            <p class="text-[12px] text-gray-400">CPO, TechStartup</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (middle — offset upward on desktop for depth) -->
+      <div class="glass rounded-2xl p-7 testi-mid border-indigo-500/25
+                  hover:scale-[1.03] hover:shadow-[0_0_38px_rgba(99,102,241,0.3)]
+                  transition-all duration-300">
+        <div class="flex gap-[3px] text-amber-400 text-sm mb-4">★★★★★</div>
+        <p class="text-gray-300 text-[14px] leading-relaxed mb-7">
+          "The AI features are mind-blowing. It's like having an extra team member that never sleeps."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 flex-shrink-0"></div>
+          <div>
+            <p class="text-[14px] font-semibold">Mike Chen</p>
+            <p class="text-[12px] text-gray-400">CTO, DevCorp</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass rounded-2xl p-7 hover:scale-[1.03]
+                  hover:shadow-[0_0_32px_rgba(99,102,241,0.22)] transition-all duration-300">
+        <div class="flex gap-[3px] text-amber-400 text-sm mb-4">★★★★★</div>
+        <p class="text-gray-300 text-[14px] leading-relaxed mb-7">
+          "Best investment we've made. The ROI was visible within the first week of using FlowApp."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex-shrink-0"></div>
+          <div>
+            <p class="text-[14px] font-semibold">Emily Davis</p>
+            <p class="text-[12px] text-gray-400">Founder, DesignHub</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</section><!-- /testimonials -->
 
-<!-- TESTIMONIALS -->
-<section class="py-20 px-6 bg-gray-800 text-center">
-  <h2 class="text-3xl font-bold mb-10">Testimonials</h2>
 
-  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+<section id="pricing" class="relative py-32 px-6 overflow-hidden">
 
-    <div class="bg-white/10 p-4 rounded hover:scale-105">
-      ⭐⭐⭐⭐⭐
-      <p>"Great product"</p>
-      <p class="text-sm text-gray-400">User 1</p>
-    </div>
+  <div class="absolute inset-0 cta-grad" aria-hidden="true"></div>
 
-    <div class="bg-white/10 p-4 rounded md:-mt-6 hover:scale-105">
-      ⭐⭐⭐⭐⭐
-      <p>"Very useful"</p>
-      <p class="text-sm text-gray-400">User 2</p>
-    </div>
+  <div class="absolute inset-0 line-grid opacity-25" aria-hidden="true"></div>
 
-    <div class="bg-white/10 p-4 rounded hover:scale-105">
-      ⭐⭐⭐⭐⭐
-      <p>"Loved it"</p>
-      <p class="text-sm text-gray-400">User 3</p>
-    </div>
+  <!-- Floating orb top-left -->
+  <div class="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-white/10
+              blur-3xl animate-float pointer-events-none" aria-hidden="true"></div>
 
-  </div>
-</section>
+  <!-- Floating orb bottom-right -->
+  <div class="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-white/10
+              blur-3xl animate-float-d1 pointer-events-none" aria-hidden="true"></div>
 
-<!-- CTA -->
-<section class="py-20 text-center relative overflow-hidden">
-
-  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-70"></div>
-
-  <div class="relative">
-    <h2 class="text-3xl font-bold mb-4">
-      Ready to transform your workflow?
+  <!-- CTA text content -->
+  <div class="relative z-10 max-w-2xl mx-auto text-center">
+    <h2 class="font-display text-[40px] md:text-[54px] font-extrabold leading-[1.1] mb-6">
+      Ready to transform<br/>your workflow?
     </h2>
-
-    <p class="mb-6">Start building faster today</p>
-
-    <div class="flex justify-center gap-4">
-      <button class="bg-white text-black px-5 py-2 rounded">
-        Start Free Trial
+    <p class="text-white/75 text-[17px] mb-11 max-w-lg mx-auto">
+      Join 2,000+ teams already using FlowApp to build better products, faster.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+      <!-- White fill primary button -->
+      <button class="px-9 py-[14px] rounded-xl bg-white text-gray-900 font-bold text-[14px]
+                     hover:bg-gray-100 hover:scale-[1.05] transition-all duration-300
+                     shadow-lg flex items-center gap-1.5">
+        Start Free Trial →
       </button>
-      <button class="border px-5 py-2 rounded">
+      <!-- Outline secondary button -->
+      <button class="px-9 py-[14px] rounded-xl border-2 border-white/55 text-white font-bold text-[14px]
+                     hover:bg-white/12 hover:border-white hover:scale-[1.05] transition-all duration-300">
         Schedule Demo
       </button>
     </div>
+    <p class="text-white/50 text-[12px] tracking-wide">
+      No credit card required &bull; 14-day free trial &bull; Cancel anytime
+    </p>
   </div>
+</section><!-- /cta -->
 
-</section>
 
-<!-- FOOTER -->
-<footer class="bg-gray-900 py-10 px-6 text-center">
+<!-- ═══════════════════════════════════════
+  FOOTER (Image 5)
+  Dark bg, 4-column grid, social icon glow
+  Copyright: © 2026 FlowApp. All rights reserved.
+═══════════════════════════════════════ -->
+<footer class="bg-[#04040d] border-t border-white/[0.07] px-6 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
 
-  <h3 class="mb-3">FlowApp</h3>
+      <!-- Brand column -->
+      <div class="col-span-2 md:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
+            <svg class="w-[15px] h-[15px] text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="font-display font-bold text-[16px]">FlowApp</span>
+        </div>
+        <p class="text-gray-500 text-[13px] leading-relaxed mb-6">
+          Build better products faster with the all-in-one platform for modern teams.
+        </p>
+        <div class="flex gap-2.5">
+          <!-- X / Twitter -->
+          <a href="#" aria-label="X"
+             class="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.09] flex items-center justify-center
+                    hover:bg-indigo-600/25 hover:border-indigo-500/40
+                    hover:shadow-[0_0_14px_rgba(99,102,241,0.4)] transition-all duration-300">
+            <svg class="w-[14px] h-[14px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.734-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn"
+             class="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.09] flex items-center justify-center
+                    hover:bg-indigo-600/25 hover:border-indigo-500/40
+                    hover:shadow-[0_0_14px_rgba(99,102,241,0.4)] transition-all duration-300">
+            <svg class="w-[14px] h-[14px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" aria-label="YouTube"
+             class="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.09] flex items-center justify-center
+                    hover:bg-indigo-600/25 hover:border-indigo-500/40
+                    hover:shadow-[0_0_14px_rgba(99,102,241,0.4)] transition-all duration-300">
+            <svg class="w-[14px] h-[14px] text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
 
-  <div class="flex justify-center gap-6 mb-4 text-sm text-gray-400">
-    <span>Product</span>
-    <span>Company</span>
-    <span>Legal</span>
+      <!-- Product -->
+      <div>
+        <h4 class="text-white font-semibold text-[13.5px] mb-5">Product</h4>
+        <ul class="space-y-3.5">
+          <li><a href="#features" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Features</a></li>
+          <li><a href="#pricing"  class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Pricing</a></li>
+          <li><a href="#"         class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Integrations</a></li>
+          <li><a href="#"         class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Changelog</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-white font-semibold text-[13.5px] mb-5">Company</h4>
+        <ul class="space-y-3.5">
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">About</a></li>
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Blog</a></li>
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Careers</a></li>
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="text-white font-semibold text-[13.5px] mb-5">Legal</h4>
+        <ul class="space-y-3.5">
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Privacy</a></li>
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Terms</a></li>
+          <li><a href="#" class="text-gray-500 text-[13px] hover:text-white hover:translate-x-1 transition-all inline-block">Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="border-t border-white/[0.07] pt-7 text-center">
+      <p class="text-gray-600 text-[12.5px]">© 2026 FlowApp. All rights reserved.</p>
+    </div>
   </div>
-
-  <p class="text-gray-500 text-sm">
-    © 2026 FlowApp. All rights reserved.
-  </p>
-
 </footer>
 
 <script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
+  // Mobile hamburger toggle
+  const ham  = document.getElementById('ham');
+  const menu = document.getElementById('mob-menu');
+  ham.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 </script>
-
 </body>
 </html>
