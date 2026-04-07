@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+}
+
+.love-font { font-family: 'Great Vibes', cursive; }
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: float 8s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+}
+
+.glow { text-shadow: 0 0 20px rgba(255, 0, 100, 0.8); }
+
+.card {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.card:hover { transform: scale(1.05) rotateY(10deg); }
+
+.fade-in { animation: fadeIn 2s ease-in-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse { animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<40;i++){
+  let heart=document.createElement('div');
+  heart.className='heart';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(5+Math.random()*5)+'s';
+  heart.style.opacity=Math.random();
+  document.body.appendChild(heart);
+}
+</script>
+
+<!-- HERO -->
+<section class="h-screen flex flex-col justify-center items-center text-center text-white px-4">
+  <h1 class="love-font text-6xl md:text-8xl glow fade-in">I Love You Nidhhii ❤️</h1>
+  <p class="mt-6 text-lg md:text-2xl max-w-xl fade-in">
+    From the moment you came into my life, everything became more beautiful. You are my happiness, my peace, my forever.
+  </p>
+  <button onclick="scrollToMessage()" class="mt-10 px-8 py-3 bg-white text-pink-500 rounded-full font-semibold shadow-lg hover:scale-110 transition pulse">
+    Open My Heart 💌
+  </button>
+</section>
+
+<!-- MESSAGE CARDS -->
+<section id="message" class="py-20 px-6">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+
+    <div class="card p-6 text-white">
+      <h2 class="love-font text-3xl mb-3">Why You?</h2>
+      <p>You make my world brighter. Your smile is my favorite view.</p>
+    </div>
+
+    <div class="card p-6 text-white">
+      <h2 class="love-font text-3xl mb-3">My Promise</h2>
+      <p>I will always stand by you, support you, and love you endlessly.</p>
+    </div>
+
+    <div class="card p-6 text-white">
+      <h2 class="love-font text-3xl mb-3">Forever</h2>
+      <p>No matter what happens, my heart will always belong to you.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- IMAGE GALLERY -->
+<section class="py-20 px-6 text-center text-white">
+  <h2 class="love-font text-5xl mb-10">Your Memories 📸</h2>
+  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <img src="WhatsApp Image 2026-04-07 at 11.36.33 AM (1).jpeg" class="rounded-2xl shadow-xl hover:scale-110 transition duration-500">
+    <img src="WhatsApp Image 2026-04-07 at 11.36.33 AM (2).jpeg" class="rounded-2xl shadow-xl hover:scale-110 transition duration-500">
+    <img src="WhatsApp Image 2026-04-07 at 11.36.33 AM (1).jpeg" class="rounded-2xl shadow-xl hover:scale-110 transition duration-500">
+  </div>
+  
+</section>
+
+<!-- LOVE LETTER -->
+<section class="py-20 px-6 text-center text-white">
+  <h2 class="love-font text-5xl mb-6">A Letter For You 💌</h2>
+  <p class="max-w-2xl mx-auto text-lg">
+    My love, every day with you feels like a dream I never want to wake up from. You are the reason behind my smile, the peace in my chaos, and the love of my life. I may not always say it perfectly, but I truly love you more than words can ever express.
+  </p>
+</section>
+
+<!-- SURPRISE -->
+<section class="py-20 text-center text-white">
+  <h2 class="love-font text-5xl mb-6">A Little Surprise 💖</h2>
+  <button onclick="showLove()" class="px-10 py-4 bg-pink-500 rounded-full text-white text-xl shadow-xl hover:scale-110 transition">
+    Click Me
+  </button>
+
+  <p id="loveText" class="mt-10 text-3xl love-font hidden">I Love You Forever Nidhhii ❤️</p>
+</section>
+
+<footer class="text-center py-10 text-white opacity-80">
+  Made with ❤️ just for you
+</footer>
+
+<script>
+function scrollToMessage(){
+  document.getElementById('message').scrollIntoView({behavior:'smooth'});
+}
+
+function showLove(){
+  document.getElementById('loveText').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
